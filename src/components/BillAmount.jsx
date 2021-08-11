@@ -19,7 +19,6 @@ const BillAmount = () => {
 				<img src={IconDollar} alt="Icon dollar" />
 				<input
 					className="input-full"
-					dir="rtl"
 					type="number"
 					min={0}
 					value={billAmount}

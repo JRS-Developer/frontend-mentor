@@ -28,7 +28,6 @@ const TipButton = ({ value = 0, index, editable = false }) => {
 			<div>
 				<input
 					className="input-full"
-					dir="rtl"
 					type="number"
 					value={inputValue}
 					autoFocus

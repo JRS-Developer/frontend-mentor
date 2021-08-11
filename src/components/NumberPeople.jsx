@@ -32,7 +32,6 @@ const NumberPeople = () => {
 							? "input--error input-full"
 							: "input-full"
 					}`}
-					dir="rtl"
 					type="number"
 					onChange={handleChange}
 					min={0}
