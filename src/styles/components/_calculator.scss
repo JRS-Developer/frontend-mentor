@@ -1,0 +1,27 @@
+.calculator {
+	background: var(--white);
+	border-radius: 1rem;
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(2, minmax(100px, 350px));
+	margin: 0 0.5rem;
+	padding: 2rem;
+
+	@include upto(s) {
+		gap: 1rem;
+		grid-template-columns: 1fr;
+	}
+}
+
+.calculator-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: space-between;
+}
+
+.calculator-section__container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}

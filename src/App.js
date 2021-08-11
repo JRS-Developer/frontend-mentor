@@ -1,19 +1,19 @@
-import CalculatorSection from "./components/CalculatorSection";
-import TotalSection from "./components/TotalSection";
 import { TipContextProvider } from "./Context";
 import LogoSection from "./components/LogoSection";
 import "./styles/styles.scss";
+import Calculator from "./components/Calculator";
+import Attribution from "./components/Attribution";
 
 function App() {
-  return (
-    <TipContextProvider>
-      <div>
-        <LogoSection />
-        <CalculatorSection />
-        <TotalSection />
-      </div>
-    </TipContextProvider>
-  );
+    return (
+        <TipContextProvider>
+            <main className="main">
+                <LogoSection />
+                <Calculator />
+                <Attribution />
+            </main>
+        </TipContextProvider>
+    );
 }
 
 export default App;

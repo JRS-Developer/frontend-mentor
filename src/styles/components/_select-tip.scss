@@ -1,0 +1,13 @@
+.select-tip__btn-container {
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.select-tip__btn-container > button {
+	height: 50px;
+}
+
+.select-tip__btn-container input {
+	height: 100%;
+}

@@ -2,9 +2,9 @@ import Logo from "../images/logo.svg";
 
 const LogoSection = () => {
 	return (
-		<section>
+		<header className="logo-section">
 			<img src={Logo} alt="Logo" />
-		</section>
+		</header>
 	);
 };
 

@@ -23,13 +23,12 @@ const TipButton = ({ value = 0, index, editable = false }) => {
 		setSelectedTip({ value: inputValue, index });
 	};
 
-	return (
-		<div
-			style={selectedTip.index === index ? { background: "red" } : null}
-			onClick={changeSelectedTip}
-		>
-			{editing ? (
+	if (editing) {
+		return (
+			<div>
 				<input
+					className="input-full"
+					dir="rtl"
 					type="number"
 					value={inputValue}
 					autoFocus
@@ -37,13 +36,29 @@ const TipButton = ({ value = 0, index, editable = false }) => {
 					onBlur={(e) => handleOnBlur(e)}
 					min={0}
 				/>
-			) : (
-				<p onClick={editable ? changeEditing : null}>
-					{editable ? inputValue : value}
-				</p>
-			)}
-		</div>
-	);
+			</div>
+		);
+	} else {
+		return (
+			<button
+				className={`btn ${
+					selectedTip.index === index ? "btn--selected" : null
+				} ${editable && "btn-custom"}`}
+				onClick={() => {
+					changeSelectedTip();
+					if (editable) {
+						changeEditing();
+					}
+				}}
+			>
+				{editable
+					? isNaN(Number(inputValue))
+						? inputValue
+						: `${inputValue}%`
+					: value}
+			</button>
+		);
+	}
 };
 
 export default TipButton;

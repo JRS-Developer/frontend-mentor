@@ -1,0 +1,41 @@
+.btn {
+	background: var(--dark-cyan);
+	border: 0;
+	border-radius: var(--btn-radius);
+	color: var(--white);
+	font-size: var(--fs-normal);
+	font-weight: var(--fw-bolder);
+	padding: 0.5rem;
+}
+
+.btn:hover,
+.btn:active {
+	background: var(--light-grayish-cyan);
+	color: var(--very-dark-cyan);
+	cursor: pointer;
+}
+
+.btn:focus-visible {
+	border: 2px solid var(--primary);
+}
+
+.btn-custom {
+	background: var(--lighter-grayish-cyan);
+	color: var(--very-dark-cyan);
+}
+
+.btn-full {
+	width: 100%;
+}
+
+.btn--selected {
+	background: var(--primary);
+	color: var(--very-dark-cyan);
+	font-weight: var(--fw-bolder);
+}
+
+.btn--disabled {
+	background: var(--very-dark-cyan);
+	color: var(--dark-grayish-cyan);
+	pointer-events: none;
+}

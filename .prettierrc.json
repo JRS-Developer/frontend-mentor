@@ -1,0 +1,12 @@
+{
+	"overrides": [
+		{
+			"files": ["*.scss"],
+			"options": {
+				"singleQuote": true
+			}
+		}
+	],
+	"tabWidth": 4,
+	"useTabs": true
+}

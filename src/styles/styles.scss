@@ -1,5 +1,16 @@
-@import "./vendors/normalize.scss";
+@import './vendors/normalize';
 
-body {
-	background: red;
-}
+@import './config/mixins';
+@import './config/variables';
+
+@import './base/base';
+
+@import './components/main';
+@import './components/input';
+@import './components/button';
+@import './components/calculator';
+@import './components/logo-section';
+@import './components/total-section';
+@import './components/select-tip';
+
+@import './helpers/helpers';

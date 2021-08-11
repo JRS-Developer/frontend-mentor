@@ -1,0 +1,107 @@
+// Colors
+
+.cl-primary {
+	color: var(--primary);
+}
+
+.cl-secondary {
+	color: var(--secondary);
+}
+
+.cl-white {
+	color: var(--white);
+}
+
+.cl-dark-gray {
+	color: var(--dark-grayish-cyan);
+}
+
+.error {
+	color: var(--red);
+}
+
+// Flex
+.flex {
+	display: flex;
+}
+
+// Align Items
+
+.ai-center {
+	align-items: center;
+}
+
+.ai-start {
+	align-items: flex-start;
+}
+
+.ai-end {
+	align-items: flex-end;
+}
+
+// Flex direction
+.fd-column {
+	flex-direction: column;
+}
+
+.fd-column-reverse {
+	flex-direction: column-reverse;
+}
+
+.fd-row {
+	flex-direction: row;
+}
+
+.fd-row-reverse {
+	flex-direction: row-reverse;
+}
+
+// Justify Content
+.jc-space-between {
+	justify-content: space-between;
+}
+
+.jc-space-evenly {
+	justify-content: space-between;
+}
+
+.jc-space-around {
+	justify-content: space-around;
+}
+
+// Gap
+
+@for $number from 1 through 10 {
+	.gap-#{$number} {
+		gap: #{$number}rem;
+	}
+}
+
+// Text
+.txt-bigger {
+	font-size: var(--fs-bigger);
+}
+
+.txt-big {
+	font-size: var(--fs-big);
+}
+
+.txt-normal {
+	font-size: var(--fs-normal);
+}
+
+.txt-small {
+	font-size: var(--fs-small);
+}
+
+.fw-normal {
+	font-weight: var(--fw-normal);
+}
+
+.fw-bold {
+	font-weight: var(--fw-bold);
+}
+
+.fw-bolder {
+	font-weight: var(--fw-bolder);
+}

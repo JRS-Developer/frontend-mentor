@@ -1,0 +1,13 @@
+{
+	"extends": "stylelint-config-sass-guidelines",
+	"rules": {
+		"indentation": "tab",
+		"number-leading-zero": null,
+		"color-no-hex": true,
+		"declaration-no-important": true,
+		"declaration-block-no-duplicate-properties": true,
+		"selector-class-pattern": null,
+		"selector-no-qualifying-type": null
+	},
+	"ignoreFiles": "./src/styles/styles.scss"
+}

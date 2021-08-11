@@ -11,11 +11,17 @@ const percentagesTip = [
 
 const SelectTip = () => {
 	return (
-		<div>
-			<h1>Select Tip %</h1>
-			{percentagesTip.map((percentage, index) => {
-				return <TipButton key={index} index={index} {...percentage} />;
-			})}
+		<div className="calculator-section__container">
+			<label>
+				<b>Select Tip %</b>
+			</label>
+			<div className="select-tip__btn-container">
+				{percentagesTip.map((percentage, index) => {
+					return (
+						<TipButton key={index} index={index} {...percentage} />
+					);
+				})}
+			</div>
 		</div>
 	);
 };
