@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [Add solution URL here](https://your-solution-url.com)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/tip-calculator-app-made-with-reactjs-scss-responsive-design-MiHP2j0Y_)
+-   Live Site URL: [Add live site URL here](https://tip-calculator-app-jrs.netlify.app/)
 
 ## My process
 
@@ -79,12 +79,7 @@ input[type="number"] {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-### Useful resources
-
--   [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
--   [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+Making this project I saw that I have to work hard on doing better the use of the global context to maintain better the context of the app, because at some moments I had problems with that.
 
 ## Author
 
