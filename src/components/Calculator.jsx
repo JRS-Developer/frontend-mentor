@@ -3,10 +3,10 @@ import TotalSection from "./TotalSection";
 
 const Calculator = () => {
 	return (
-		<section className="calculator">
+		<div className="calculator">
 			<CalculatorSection />
 			<TotalSection />
-		</section>
+		</div>
 	);
 };
 

@@ -5,11 +5,11 @@ import NumberPeople from "./NumberPeople";
 
 const CalculatorSection = () => {
 	return (
-		<section className="calculator-section">
+		<div className="calculator-section">
 			<BillAmount />
 			<SelectTip />
 			<NumberPeople />
-		</section>
+		</div>
 	);
 };
 
