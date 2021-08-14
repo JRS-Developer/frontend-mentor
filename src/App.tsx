@@ -1,5 +1,14 @@
+import { AppContextProvider } from "./Context";
+import JobListing from "./components/JobListing";
+import FilterBar from "./components/FilterBar";
+
 function App() {
-    return <h1>Hola mundo</h1>;
+    return (
+        <AppContextProvider>
+            <FilterBar />
+            <JobListing />
+        </AppContextProvider>
+    );
 }
 
 export default App;
