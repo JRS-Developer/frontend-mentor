@@ -78,9 +78,7 @@ const getNewJobItems = ({
 				job.role === filter ||
 				job.level === filter
 			) {
-				{
-					matches.push(true);
-				}
+				matches.push(true);
 			}
 		});
 		return matches.length === filtersLength;

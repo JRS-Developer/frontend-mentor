@@ -1,12 +1,15 @@
 import { AppContextProvider } from "./Context";
 import JobListing from "./components/JobListing";
 import FilterBar from "./components/FilterBar";
+import Layout from "./components/Layout";
 
 function App() {
     return (
         <AppContextProvider>
-            <FilterBar />
-            <JobListing />
+            <Layout>
+                <FilterBar />
+                <JobListing />
+            </Layout>
         </AppContextProvider>
     );
 }

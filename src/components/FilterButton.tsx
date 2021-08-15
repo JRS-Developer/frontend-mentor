@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 import { useAppContext } from "../Context";
-import IconRemove from "../images/icon-remove.svg";
+import RemoveIcon from "../images/icon-remove.svg";
 
 const FilterButton = ({
 	title,
@@ -28,7 +28,9 @@ const FilterButton = ({
 	return (
 		<button onClick={removable ? removeFilter : addFilter}>
 			{title}
-			{removable && <img src={IconRemove} alt="Icon Remove" />}
+			{removable && (
+				<img src={RemoveIcon} alt="Remove Icon" loading="lazy" />
+			)}
 		</button>
 	);
 };

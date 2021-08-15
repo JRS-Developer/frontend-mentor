@@ -11,4 +11,6 @@ p {
 body {
 	margin: 0;
 	font-family: Spartan, Arial, Helvetica, Roboto, sans-serif;
+	min-width: 1000vh;
+	overflow-x: hidden;
 }
