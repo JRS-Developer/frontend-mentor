@@ -1,14 +1,16 @@
-@import "./base/reset";
-@import "./base/typography";
-@import "./base/base";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "./config/mixins";
-@import "./config/variables";
-
-// Components
-
-@import "./layout/main";
-@import "./layout/header";
-@import "./layout/footer";
-
-@import "./helpers/helpers";
+@layer base {
+    @font-face {
+        font-family: Spartan;
+        src: url("../fonts/Spartan-Medium.ttf");
+        font-weight: 500;
+    }
+    @font-face {
+        font-family: Spartan;
+        src: url("../fonts/Spartan-Bold.ttf");
+        font-weight: 700;
+    }
+}
