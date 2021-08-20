@@ -85,4 +85,4 @@ Making this project I saw that I have to work hard on doing better the use of th
 
 -   Website - [Jose Sanchez - JRS-Dev](https://jrs-developer.github.io/)
 -   Frontend Mentor - [@JRS-Developer](https://www.frontendmentor.io/profile/JRS-Developer)
--   Twitter - [@yourusername](https://www.twitter.com/yourusername)
+-   Twitter - [@Josejrsdev](https://www.twitter.com/Josejrsdev)
