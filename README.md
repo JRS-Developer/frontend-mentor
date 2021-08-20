@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+# Frontend Mentor - Job listings with filtering solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Filter job listings based on the categories
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![Screenshot](./screenshot.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/static-job-listing-with-filtering-of-jobs-kDeQbrAiP)
+- Live Site URL: [Live Site](https://github.com/jrS-Developer/static-job-listing/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Semantic HTML5 markup
+- Flexbox
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [TypeScript](https://www.typescriptlang.org/) - JS but with strong typed
+- [TailWindCSS](https://tailwindcss.com/) - CSS FrameWork
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+In this project I learned a lot using TypeScript and TailWindCSS, in this project I deciced to use TypeScript to obtain the advantages like types and avoid errors with what need a function and have a better organization of the code and the CSS framework TailWindCSS for the styles of the site to avoid to think in names to classes and to have a great design system.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Reforzing the use of types and interfaces with TypeScript:
 
-## Learn More
+```ts
+// Showing childrens in TypeScript
+const MyComponent = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+};
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```ts
+// Providing the types for the AppContext
+export interface AppContextInterface {
+  jobItems: JobInterface[];
+  filters: string[];
+  AddFilterContext?: (title: string | null) => void;
+  RemoveFilterContext?: (title: string | null) => void;
+  ClearFilterContext?: () => void;
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Continued development
+
+Learn more development recourses with React like NextJS or GatsbyJS and maybe see a little of React Native to getting better with JavaScript and the creation of front-end Apps
+
+## Author
+
+- Website - [Jose Sanchez - JRS-Developer](https://jrs-developer.github.io/)
+- Frontend Mentor - [@JRS-Developer](https://www.frontendmentor.io/profile/JRS-Developer)
+- Twitter - [@Josejrsdev](https://twitter.com/Josejrsdev/)
+- Linkedin - [@jose-s-developer](https://www.linkedin.com/in/jose-s-developer/)

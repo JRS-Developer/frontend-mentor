@@ -16,7 +16,31 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <main className="font-sans text-body text-primary font-bold mb-24">
                 {children}
             </main>
-            <footer className="font-sans"></footer>
+            <footer className="font-sans">
+                <p className="mb-8 text-center mx-8">
+                    Challenge by{" "}
+                    <a
+                        className="text-primary hover:underline font-bold"
+                        href="https://www.frontendmentor.io?ref=challenge"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Frontend Mentor
+                    </a>
+                    .
+                    <br />
+                    Coded by{" "}
+                    <a
+                        className="text-primary hover:underline font-bold"
+                        href="https://github.com/JRS-Developer/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Jose Sanchez - JRS-Developer
+                    </a>
+                    .
+                </p>
+            </footer>
         </>
     );
 };
