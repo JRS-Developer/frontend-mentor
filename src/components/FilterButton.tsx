@@ -37,7 +37,7 @@ const FilterButton = ({
                     className="flex items-center justify-center bg-primary hover:bg-very-dark-g-cyan h-full p-2 cursor-pointer transition-all"
                     onClick={removeFilter}
                 >
-                    <img src={RemoveIcon} alt="Remove Icon" loading="lazy" />
+                    <img src={RemoveIcon} alt="Remove Icon" />
                 </div>
             )}
         </button>

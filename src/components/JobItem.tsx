@@ -12,7 +12,6 @@ const JobItem = (props: JobInterface) => {
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/${props.logo}`}
                     alt={props.company}
-                    loading="lazy"
                 />
             </div>
             <div className="text-base space-y-2">
