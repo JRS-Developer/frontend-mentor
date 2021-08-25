@@ -1,12 +1,29 @@
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
-const Button = ({ children, extraClass = false }: { children: ReactNode, extraClass?: string | boolean }) => {
-    return (
-        <button className={`bg-green-500 rounded-full px-4 py-2 text-white ${extraClass ? extraClass : null}`}>
-            {children}
-        </button>
-    )
+interface ButtonI {
+    children: ReactNode;
+    extraClass?: string | boolean;
+    round_style?: "rounded" | "squared";
+    type?: 'submit' | 'button'
+    onClick?(): any;
 }
 
+const Button = ({
+    children,
+    extraClass = false,
+    round_style = "rounded",
+    type = 'button',
+    onClick,
+}: ButtonI): JSX.Element => {
+    return (
+        <button
+            className={`${extraClass ? extraClass : null} bg-primary ${round_style === "rounded" ? "rounded-full" : "rounded-md"
+                }  px-8 py-2 text-white hover:bg-light-blue transition-all font-bold`}
+            onClick={onClick && onClick} type={type}
+        >
+            {children}
+        </button>
+    );
+};
 
-export default Button
+export default Button;

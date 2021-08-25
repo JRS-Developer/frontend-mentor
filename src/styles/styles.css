@@ -3,14 +3,34 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: Poppins;
-        font-weight: 500;
-        src: url("../fonts/Poppins-Medium.ttf");
-    }
-    @font-face {
-        font-family: Poppins;
-        font-weight: 700;
-        src: url("../fonts/Poppins-Bold.ttf");
-    }
+  @font-face {
+    font-family: Poppins;
+    font-weight: 500;
+    src: url("../fonts/Poppins-Medium.ttf");
+  }
+  @font-face {
+    font-family: Poppins;
+    font-weight: 700;
+    src: url("../fonts/Poppins-Bold.ttf");
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+
+.input {
+  @apply rounded-md pl-4 py-4;
+}
+
+.input:focus,
+.input:focus-within {
+  @apply outline-primary;
+}
+
+.input.error::placeholder {
+  @apply outline-error text-secondary opacity-50;
+}
+
+.input.error {
+  @apply outline-error text-secondary;
 }
