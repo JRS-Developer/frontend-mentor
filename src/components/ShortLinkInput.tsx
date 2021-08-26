@@ -71,7 +71,7 @@ const ShortLinkInput = ({ setLinks }: Props) => {
 
     return (
         <form
-            className="grid grid-cols-none md:grid-cols-1-auto bg-primary-alt rounded-lg p-12 gap-4"
+            className="grid grid-cols-none md:grid-cols-1-auto bg-primary-alt rounded-lg p-8 md:p-12 gap-12 md:gap-4"
             onSubmit={handleSubmit}
         >
             <div className="relative">

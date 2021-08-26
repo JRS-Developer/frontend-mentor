@@ -9,4 +9,9 @@ export interface ShortLinkI {
     originalLink: string
 }
 
-
+export interface FeatureCardI {
+    img: string,
+    title: string,
+    desc: string,
+    margin?: number
+}

@@ -3,7 +3,7 @@ import CopyButton from './CopyButton'
 
 const ShortLink = ({ shortLink, originalLink }: ShortLinkI) => {
     return (
-        <li className="flex flex-col bg-white gap-4 p-4 md:items-center md:flex-row">
+        <li className="flex flex-col bg-white gap-4 p-4 items-stretch md:items-center md:flex-row">
             <p className="max-w-full md:max-w-1/2 truncate">
                 {originalLink}
             </p>

@@ -16,7 +16,7 @@ const CopyButton = ({ shortLink }: { shortLink: string }) => {
     return (
         <Button
             onClick={handleClick}
-            extraClass={`w-32 ${copy && "bg-dark-violet"}`}
+            extraClass={`md:w-32 ${copy && "bg-dark-violet"}`}
             round_style="squared"
         >
             {copy ? "Copied" : "Copy"}

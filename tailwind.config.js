@@ -1,8 +1,8 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-    purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-    mode: "jit",
+    purge: ["./src  *.{js,jsx,ts,tsx}", "./public/index.html"],
+    //mode: "jit",
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
@@ -40,8 +40,15 @@ module.exports = {
             },
             outline: {
                 primary: ["3px solid hsl(180, 66%, 49%)"],
-                error: ["3px solid  hsl(0, 87%, 67%)"]
+                error: ["3px solid  hsl(0, 87%, 67%)"],
             },
+            backgroundImage: (theme) => ({
+                "boost-mobile": "url('/src/images/bg-boost-mobile.svg')",
+                "boost-desktop": "url('/src/images/bg-boost-desktop.svg')",
+            }),
+            height: {
+                'max': 'max-content'
+            }
         },
     },
     variants: {
