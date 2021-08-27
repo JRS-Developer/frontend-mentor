@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useRef } from "react";
 import Button from "./Button";
 import axios from "axios";
 import { ShortLinkI } from "../interfaces";
@@ -18,8 +17,9 @@ interface DataResult {
 }
 
 const ShortLinkInput = ({ setLinks }: Props) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    const [inputValue, setInputValue] = useState("");
     const [isValid, setIsValid] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const checkIsValid = (inputValue: string): boolean => {
         if (inputValue.length === 0) {
@@ -36,6 +36,7 @@ const ShortLinkInput = ({ setLinks }: Props) => {
 
     const getLink = async (link: string) => {
         try {
+            setLoading(true);
             const {
                 data: { result },
             }: DataResult = await axios.post(
@@ -55,39 +56,49 @@ const ShortLinkInput = ({ setLinks }: Props) => {
                 return newLinks;
             });
             saveLink(newLinks);
+            setLoading(false);
         } catch (e) {
+            setLoading(false)
             console.log(e);
         }
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        const input = inputRef.current;
-        if (input !== null) {
-            const link: string = input.value;
-            checkIsValid(link) && getLink(link);
-        }
+        e.preventDefault();
+        setInputValue('')
+        checkIsValid(inputValue) && getLink(inputValue);
     };
 
     return (
         <form
-            className="grid grid-cols-none md:grid-cols-1-auto bg-primary-alt rounded-lg p-8 md:p-12 gap-12 md:gap-4"
+            className="grid grid-cols-none md:grid-cols-1-auto bg-primary-alt rounded-lg p-8 md:p-12 gap-12 bg-no-repeat md:gap-4 bg-shorten-mobile md:bg-shorten-desktop"
             onSubmit={handleSubmit}
         >
             <div className="relative">
                 <input
                     type="text"
-                    className={`input w-full ${isValid ? null : 'error'}`}
+                    className={`input w-full ${isValid ? null : "error"}`}
                     placeholder="Shorten a link here..."
-                    ref={inputRef}
-                    onChange={(e) => checkIsValid(e.target.value)}
+                    onChange={(e) => {
+                        setInputValue(e.target.value);
+                        checkIsValid(e.target.value);
+                    }}
+                    value={inputValue}
                 />
-                <p className={`text-secondary italic mt-2 ${isValid ? 'hidden' : 'absolute'}`}>
+                <p
+                    className={`text-secondary italic mt-2 ${isValid ? "hidden" : "absolute"
+                        }`}
+                >
                     Please add a link
                 </p>
             </div>
-            <Button round_style={"squared"} type="submit">
-                Shorten It!
+            <Button
+                round_style={"squared"}
+                type="submit"
+                spinner={loading}
+                disabled={loading}
+            >
+                {loading ? "Processing" : "Shorten It!"}
             </Button>
         </form>
     );

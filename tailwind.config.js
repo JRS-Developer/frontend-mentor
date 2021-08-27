@@ -37,6 +37,7 @@ module.exports = {
             },
             gridTemplateColumns: {
                 "1-auto": "1fr auto",
+                "1-2-1": "1fr 2fr 1fr"
             },
             outline: {
                 primary: ["3px solid hsl(180, 66%, 49%)"],
@@ -45,6 +46,8 @@ module.exports = {
             backgroundImage: (theme) => ({
                 "boost-mobile": "url('/src/images/bg-boost-mobile.svg')",
                 "boost-desktop": "url('/src/images/bg-boost-desktop.svg')",
+                "shorten-mobile": "url('/src/images/bg-shorten-mobile.svg')",
+                "shorten-desktop": "url('/src/images/bg-shorten-desktop.svg')",
             }),
             height: {
                 'max': 'max-content'

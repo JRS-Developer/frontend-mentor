@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
+
 export interface urlI {
-    link: string;
-    text: string;
-    blank: boolean;
+    text: string,
+    link: string
 }
 
 export interface ShortLinkI {
@@ -14,4 +15,14 @@ export interface FeatureCardI {
     title: string,
     desc: string,
     margin?: number
+}
+
+export interface ButtonI {
+    children: ReactNode;
+    extraClass?: string | boolean;
+    round_style?: "rounded" | "squared";
+    type?: 'submit' | 'button'
+    onClick?(): any
+    spinner?: boolean
+    disabled?: boolean
 }
