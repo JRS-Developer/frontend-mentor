@@ -51,6 +51,9 @@ module.exports = {
             }),
             height: {
                 'max': 'max-content'
+            },
+            transitionProperty: {
+                'height': 'height',
             }
         },
     },

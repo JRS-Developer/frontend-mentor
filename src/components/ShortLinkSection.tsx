@@ -22,7 +22,7 @@ const ShortLinkSection = () => {
     }, []);
 
     return (
-        <div className="px-6 lg:px-40 -mt-16">
+        <div data-aos="fade-up" className="px-6 lg:px-40 -mt-16">
             <ShortLinkInput setLinks={setLinks} />
             <LinksList links={links} />
         </div>

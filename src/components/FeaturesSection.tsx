@@ -27,7 +27,7 @@ const Features: FeatureCardI[] = [
 
 const FeaturesSection = () => {
     return (
-        <section className="flex flex-col text-center mt-28 gap-20 px-6 lg:px-40">
+        <section data-aos="fade-up" data-aos-delay="1000" className="flex flex-col text-center mt-28 gap-20 px-6 lg:px-40">
             <div>
                 <h2 className="text-4xl font-bold mb-4">Advanced Statistics</h2>
                 <p className="text-gray-default">
