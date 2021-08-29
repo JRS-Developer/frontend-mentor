@@ -37,14 +37,14 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="flex w-auto items-center lg:mx-40 mx-6 mt-6 md:mt-12 relative">
+        <nav className="flex w-auto items-center lg:mx-40 mx-6 mt-6 md:mt-12 relative font-bold ">
             <img src={Logo} alt="Logo" />
             <BarsIcon
                 className="md:hidden h-5 w-5 ml-auto opacity-60"
                 onClick={changeOpen}
             />
             <div
-                className={`absolute font-bold z-50 md:z-auto md:font-medium p-0 gap-4 md:gap-0 md:relative top-full mt-4 md:mt-0 rounded-xl w-full items-center flex-col text-center md:text-left bg-primary-alt md:bg-white text-white md:text-current transition-height ${open ? "flex top-full left-0 h-screen p-8 max-h-80" : "overflow-y-hidden md:flex h-0 md:flex-row p-0"
+                className={`absolute z-50 md:z-auto p-0 gap-4 md:gap-0 md:relative top-full mt-4 md:mt-0 rounded-xl w-full items-center flex-col text-center md:text-left bg-primary-alt md:bg-white text-white md:text-current transition-height ${open ? "flex top-full left-0 h-screen p-8 max-h-80" : "overflow-y-hidden md:flex h-0 md:h-auto md:flex-row p-0"
                     } `}
             >
                 <div className="md:ml-12 flex flex-col gap-4 md:flex-row w-full md:w-auto">
