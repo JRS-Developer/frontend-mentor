@@ -44,7 +44,7 @@ const Navbar = () => {
                 onClick={changeOpen}
             />
             <div
-                className={`absolute z-50 md:z-auto p-0 gap-4 md:gap-0 md:relative top-full mt-4 md:mt-0 rounded-xl w-full items-center flex-col text-center md:text-left bg-primary-alt md:bg-white text-white md:text-current transition-height ${open ? "flex top-full left-0 h-screen p-8 max-h-80" : "overflow-y-hidden md:flex h-0 md:h-auto md:flex-row p-0"
+                className={`absolute flex z-50 md:z-auto p-0 max-h-80 duration-500 gap-4 md:gap-0 md:relative top-full mt-4 md:mt-0 rounded-xl w-full items-center flex-col text-center md:text-left bg-primary-alt md:bg-white text-white md:text-current transition-all ${open ? "flex top-full left-0 h-screen p-8 " : "overflow-y-hidden md:flex h-0 md:h-auto md:flex-row p-0"
                     } `}
             >
                 <div className="md:ml-12 flex flex-col gap-4 md:flex-row w-full md:w-auto">
