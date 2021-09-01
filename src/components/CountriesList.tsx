@@ -1,30 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
-import useFetch from "use-http";
-import { restCountrieAPi } from "../api";
-import { CountryI } from "../interfaces";
+import { useContext } from "react";
+import { countriesContext } from "../pages/Home";
 import CountryCard from "./CountryCard";
 
-
 const CountriesList = () => {
-    const { loading, error, get, response } = useFetch(restCountrieAPi);
-    const [countries, setCountries] = useState<CountryI[]>([]);
-
-    const getCountries = useCallback(async () => {
-        const myCountries: CountryI[] = await get("all");
-        if (response.ok) setCountries(myCountries);
-    }, [get, response]);
-
-    useEffect(() => {
-        getCountries();
-    }, [getCountries]);
+    const { loading, error, countries } = useContext(countriesContext);
 
     return (
-        <ul className="mt-8 grid md:grid-cols-4 gap-16">
+        <ul className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-16">
             {loading && "loading"}
             {error && error}
-            {countries.map((country, index) => (
-                <CountryCard {...country} key={index} />
-            ))}
+            {countries !== undefined && Array.isArray(countries) &&
+                countries.length > 0 ?
+                countries.map((country, index) => (
+                    <CountryCard {...country} key={index} />
+                )) : <div>Hola</div>}
         </ul>
     );
 };

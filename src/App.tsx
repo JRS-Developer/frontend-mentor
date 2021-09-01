@@ -23,14 +23,14 @@ const App = () => {
     }, []);
 
     return (
-        <Layout>
-            <Router>
+        <Router>
+            <Layout>
                 <Switch>
                     <Route path="/details/:id" component={Details} />
                     <Route path="/" component={Home} />
                 </Switch>
-            </Router>
-        </Layout>
+            </Layout>
+        </Router>
     );
 };
 

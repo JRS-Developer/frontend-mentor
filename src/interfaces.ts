@@ -18,3 +18,11 @@ export interface CountryI {
     flag: string,
     alpha3Code: string
 }
+
+export interface countriesContextI {
+    loading?: boolean,
+    error?: Error | undefined,
+    getAllCountries?(): void,
+    countries?: CountryI[],
+    getCountriesByName?(name: string): void
+}
