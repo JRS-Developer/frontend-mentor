@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Nunito Sans";
+        src: url(../fonts/NunitoSans-Light.ttf);
+        font-weight: 300;
+    }
+
+    @font-face {
+        font-family: "Nunito Sans";
+        src: url(../fonts/NunitoSans-LightItalic.ttf);
+        font-weight: 300;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: "Nunito Sans";
+        src: url(../fonts/NunitoSans-SemiBold.ttf);
+        font-weight: 600;
+    }
+
+    @font-face {
+        font-family: "Nunito Sans";
+        src: url(../fonts/NunitoSans-SemiBoldItalic.ttf);
+        font-weight: 600;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: "Nunito Sans";
+        src: url(../fonts/NunitoSans-ExtraBold.ttf);
+        font-weight: 800;
+    }
+
+    @font-face {
+        font-family: "Nunito Sans";
+        src: url(../fonts/NunitoSans-ExtraBoldItalic.ttf);
+        font-weight: 800;
+        font-style: italic;
+    }
+}
+
+body {
+    @apply dark:text-white bg-light-gray text-very-dark-blue-alt dark:bg-very-dark-blue;
+}
+
+b {
+    @apply font-semibold;
+}
+
+.padding {
+    @apply md:px-16 px-4;
+}
+
+.select {
+    @apply p-2 appearance-none pr-8 bg-white dark:bg-dark-blue rounded py-3;
+}
+
+.input {
+    @apply pl-4 bg-white dark:bg-dark-blue dark:text-white dark:placeholder-white text-xs rounded py-3;
+}
+
+.input-search {
+    @apply pl-12;
+}
+
+.input-icon {
+    @apply absolute mt-auto mb-auto top-0 bottom-0;
+}
