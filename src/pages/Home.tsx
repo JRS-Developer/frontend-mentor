@@ -24,7 +24,6 @@ const Home = () => {
         region: string,
         countries: CountryI[]
     ): CountryI[] => {
-        console.log(region)
         return countries.filter((country) => {
             return country.region === region;
         });
@@ -55,6 +54,7 @@ const Home = () => {
         region: string,
         name: string
     ) => {
+        setCountries([]);
         const countriesByName = await getApiCountries(`name/${name}`);
         const newCountries = getFilteredCountries(region, countriesByName);
         setCountries(newCountries);

@@ -1,11 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
+import { Region } from "../interfaces";
 import { countriesContext } from "../pages/Home";
-
-interface Region {
-    text: string;
-    value: string;
-}
 
 const filterRegions: Region[] = [
     {
@@ -32,8 +28,10 @@ const filterRegions: Region[] = [
     },
 ];
 
+const initialSelectValue = "filter";
+
 const FilterBar = () => {
-    const [selectValue, setSelectValue] = useState("filter");
+    const [selectValue, setSelectValue] = useState(initialSelectValue);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const {
@@ -48,7 +46,11 @@ const FilterBar = () => {
         const inputValue =
             inputRef.current !== null ? inputRef.current.value : "";
 
-        if (inputValue !== "" && getCountriesByNameAndRegion && selectValue !== 'filter') {
+        if (
+            inputValue !== "" &&
+            getCountriesByNameAndRegion &&
+            selectValue !== initialSelectValue
+        ) {
             getCountriesByNameAndRegion(selectValue, inputValue);
         } else if (getCountriesByName) getCountriesByName(name);
     };
@@ -60,8 +62,9 @@ const FilterBar = () => {
         } else if (
             getAllCountries &&
             getCountriesByRegion &&
-            selectValue !== 'filter'
+            selectValue !== initialSelectValue
         ) {
+            // Without the await, the get countries by region will not work
             await getAllCountries();
             getCountriesByRegion(selectValue, false);
         } else if (getAllCountries) {
@@ -74,7 +77,8 @@ const FilterBar = () => {
         const inputValue =
             inputRef.current !== null ? inputRef.current.value : "";
         if (
-            value !== 'filter' && inputValue !== '' &&
+            value !== initialSelectValue &&
+            inputValue !== "" &&
             getCountriesByNameAndRegion
         ) {
             getCountriesByNameAndRegion(value, inputValue);
@@ -99,7 +103,11 @@ const FilterBar = () => {
                     defaultValue={selectValue}
                     onChange={(e) => handleSelectChange(e.target.value)}
                 >
-                    <option value="filter" disabled className="hidden">
+                    <option
+                        value={initialSelectValue}
+                        disabled
+                        className="hidden"
+                    >
                         Filter by Region
                     </option>
                     {filterRegions.map((region) => (

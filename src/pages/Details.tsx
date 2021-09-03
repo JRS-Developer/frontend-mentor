@@ -5,6 +5,7 @@ import { restCountrieAPi } from "../api";
 import CountryDetails from "../components/CountryDetails";
 import { CountryI } from "../interfaces";
 import { FiArrowLeft } from 'react-icons/fi'
+import Loading from "../components/Loading";
 
 const Details = () => {
     const { id } = useParams<{ id: string }>();
@@ -31,19 +32,19 @@ const Details = () => {
     }, [getCountryData]);
 
     return (
-        <>
+        <div className="min-h-50-screen">
             <button onClick={goToPrevious} className="button button-icon mb-12">
                 <FiArrowLeft />
                 Back
             </button>
             {loading ? (
-                "loading"
+                <Loading />
             ) : country && !error ? (
                 <CountryDetails {...country} />
             ) : (
                 error && error
             )}
-        </>
+        </div>
     );
 };
 

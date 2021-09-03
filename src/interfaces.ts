@@ -28,3 +28,10 @@ export interface countriesContextI {
     getCountriesByRegion?(region: string, all?: boolean): void;
     getCountriesByNameAndRegion?(region: string, name: string): void
 }
+
+export interface Region {
+    text: string;
+    value: string;
+}
+
+

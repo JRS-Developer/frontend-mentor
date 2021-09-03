@@ -16,6 +16,9 @@ module.exports = {
                 "dark-gray": "hsl(0, 0%, 52%)", // Light mode inputs
                 "light-gray": "hsl(0, 0%, 98%)", // Light mode background
             },
+            minHeight: {
+                "50-screen": "50vh",
+            },
         },
     },
     variants: {

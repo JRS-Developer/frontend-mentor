@@ -4,6 +4,7 @@ import { restCountrieAPi } from "../api";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { numberWithCommas } from "../helpers";
+import Loading from "./Loading";
 
 const CountryDetails = (props: CountryI) => {
     const { loading, error, get, response } = useFetch(restCountrieAPi);
@@ -71,7 +72,7 @@ const CountryDetails = (props: CountryI) => {
                         </p>
                     )}
                     {loading
-                        ? "Loading"
+                        ? (<Loading />)
                         : borders.map((border) => {
                             if (!error) {
                                 return (
