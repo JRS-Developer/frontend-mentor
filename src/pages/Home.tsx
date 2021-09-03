@@ -10,33 +10,54 @@ export const countriesContext = createContext<countriesContextI>({});
 const Home = () => {
     const { loading, error, get, response } = useFetch(restCountrieAPi);
     const [countries, setCountries] = useState<CountryI[]>([]);
+    const [allCountries, setAllCountries] = useState<CountryI[]>([]);
 
-    const setNewCountries = (countries: CountryI[] | {}) => {
-        if (Array.isArray(countries)) {
-            setCountries(countries);
-        } else {
-            setCountries([]);
-        }
+    const getApiCountries = useCallback(
+        async (query: string) => {
+            const newCountries: CountryI[] = await get(query);
+            return response.ok ? newCountries : [];
+        },
+        [get, response]
+    );
+
+    const getFilteredCountries = (
+        region: string,
+        countries: CountryI[]
+    ): CountryI[] => {
+        console.log(region)
+        return countries.filter((country) => {
+            return country.region === region;
+        });
     };
 
     const getAllCountries = useCallback(async () => {
-        try {
-            setCountries([]);
-            const myCountries: CountryI[] = await get("all");
-            if (response.ok) setNewCountries(myCountries);
-        } catch (e) {
-            console.log(e);
-        }
-    }, [get, response]);
+        setCountries([]);
+        const myCountries = await getApiCountries("all");
+        setCountries(myCountries);
+        setAllCountries(myCountries);
+    }, [getApiCountries]);
 
     const getCountriesByName = async (name: string) => {
-        try {
-            setCountries([]);
-            const myCountries: CountryI[] = await get(`/name/${name}`);
-            if (response.ok) setNewCountries(myCountries);
-        } catch (e) {
-            console.log(e);
-        }
+        setCountries([]);
+        const myCountries = await getApiCountries(`name/${name}`);
+        setCountries(myCountries);
+    };
+
+    const getCountriesByRegion = (region: string, all: boolean = true) => {
+        const newCountries: CountryI[] = getFilteredCountries(
+            region,
+            all ? allCountries : countries
+        );
+        setCountries(newCountries);
+    };
+
+    const getCountriesByNameAndRegion = async (
+        region: string,
+        name: string
+    ) => {
+        const countriesByName = await getApiCountries(`name/${name}`);
+        const newCountries = getFilteredCountries(region, countriesByName);
+        setCountries(newCountries);
     };
 
     useEffect(() => {
@@ -51,6 +72,8 @@ const Home = () => {
                 getAllCountries,
                 countries,
                 getCountriesByName,
+                getCountriesByRegion,
+                getCountriesByNameAndRegion,
             }}
         >
             <FilterBar />

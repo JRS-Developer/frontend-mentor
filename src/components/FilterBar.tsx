@@ -1,28 +1,84 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
 import { countriesContext } from "../pages/Home";
 
-const filterRegions: string[] = [
-    "africa",
-    "america",
-    "asia",
-    "europe",
-    "oceania",
+interface Region {
+    text: string;
+    value: string;
+}
+
+const filterRegions: Region[] = [
+    {
+        text: "Africa",
+        value: "Africa",
+    },
+    {
+        text: "America",
+        value: "Americas",
+    },
+    {
+        text: "Asia",
+        value: "Asia",
+    },
+
+    {
+        text: "Europe",
+        value: "Europe",
+    },
+
+    {
+        text: "Oceania",
+        value: "Oceania",
+    },
 ];
 
 const FilterBar = () => {
-    const { getCountriesByName } = useContext(countriesContext);
+    const [selectValue, setSelectValue] = useState("filter");
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const {
+        getCountriesByName,
+        getAllCountries,
+        getCountriesByRegion,
+        getCountriesByNameAndRegion,
+    } = useContext(countriesContext);
     let keyTimer: any;
 
-    const searchCountries = (value: string) => {
-        if (getCountriesByName) getCountriesByName(value);
+    const searchCountries = (name: string) => {
+        const inputValue =
+            inputRef.current !== null ? inputRef.current.value : "";
+
+        if (inputValue !== "" && getCountriesByNameAndRegion && selectValue !== 'filter') {
+            getCountriesByNameAndRegion(selectValue, inputValue);
+        } else if (getCountriesByName) getCountriesByName(name);
     };
 
-    const handleChange = (value: string) => {
+    const handleInputChange = async (value: string) => {
         clearTimeout(keyTimer);
-        if (value) {
-            keyTimer = setTimeout(() => searchCountries(value), 500);
+        if (value.length > 0) {
+            keyTimer = setTimeout(() => searchCountries(value), 1000);
+        } else if (
+            getAllCountries &&
+            getCountriesByRegion &&
+            selectValue !== 'filter'
+        ) {
+            await getAllCountries();
+            getCountriesByRegion(selectValue, false);
+        } else if (getAllCountries) {
+            getAllCountries();
         }
+    };
+
+    const handleSelectChange = (value: string) => {
+        setSelectValue(value);
+        const inputValue =
+            inputRef.current !== null ? inputRef.current.value : "";
+        if (
+            value !== 'filter' && inputValue !== '' &&
+            getCountriesByNameAndRegion
+        ) {
+            getCountriesByNameAndRegion(value, inputValue);
+        } else if (getCountriesByRegion) getCountriesByRegion(value);
     };
 
     return (
@@ -32,25 +88,27 @@ const FilterBar = () => {
                 <input
                     placeholder="Search for a country..."
                     className="input input-search shadow w-full"
-                    onChange={(e) => handleChange(e.target.value)}
+                    onChange={(e) => handleInputChange(e.target.value)}
+                    ref={inputRef}
                 />
             </div>
             <div className="w-max md:w-auto md:ml-auto relative">
                 <FaChevronDown className="input-icon right-2 h-2" />
                 <select
                     className=" shadow select w-40 text-xs"
-                    defaultValue="filter"
+                    defaultValue={selectValue}
+                    onChange={(e) => handleSelectChange(e.target.value)}
                 >
                     <option value="filter" disabled className="hidden">
                         Filter by Region
                     </option>
                     {filterRegions.map((region) => (
                         <option
-                            key={region}
-                            value={region}
+                            key={region.value}
+                            value={region.value}
                             className="capitalize"
                         >
-                            {region}
+                            {region.text}
                         </option>
                     ))}
                 </select>
