@@ -1,16 +1,20 @@
 import { CountryI } from "../interfaces";
 import { Link } from "react-router-dom";
 import { numberWithCommas } from "../helpers";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const CountryCard = (props: CountryI) => {
 
     return (
         <li className="rounded bg-white shadow dark:bg-dark-blue hover:transition-all transition-all hover:shadow-md overflow-hidden">
             <Link to={`/details/${props.alpha3Code}`}>
-                <img
+                <LazyLoadImage
                     src={props.flag}
                     alt={props.name}
                     className="w-full h-36 object-cover"
+                    effect="opacity"
+                    wrapperClassName="w-full"
                 />
             </Link>
             <div className="p-4">
