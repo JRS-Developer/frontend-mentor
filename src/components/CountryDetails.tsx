@@ -29,7 +29,7 @@ const CountryDetails = (props: CountryI) => {
             <img src={props.flag} alt={props.name} className="self-center" />
             <div className="flex justify-center flex-col gap-6">
                 <h2 className="font-extrabold text-3xl">{props.name}</h2>
-                <div className="flex flex-col md:flex-row gap-4 md:gap-24 text-sm">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 md:gap-24 text-sm">
                     <div className="md:flex gap-2 flex-col">
                         <p>
                             <b>Native Name:</b> {props.nativeName}
