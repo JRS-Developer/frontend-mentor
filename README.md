@@ -26,8 +26,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/nft-preview-card-jrs-WtKVfliel)
+- [Live Site URL](https://nft-card-jrs.netlify.app/)
 
 ## My process
 
@@ -41,7 +41,7 @@ Users should be able to:
 
 ## Author
 
-- Website - [JRS-Developer](https://www.your-site.com)
+- Website - [JRS-Developer](https://jrs-developer.github.io/)
 - Frontend Mentor - [@JRS-Developer](https://www.frontendmentor.io/profile/JRS-Developer)
 - Linkedin - [@jose-s-developer](https://linkedin.com/in/jose-s-developer)
 - Github - [@JRS-Developer](https://github.com/JRS-Developer/)
