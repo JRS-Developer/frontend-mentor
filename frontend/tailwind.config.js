@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
@@ -11,6 +13,9 @@ module.exports = {
         ["n-gray-blue"]: "hsl(211, 10%, 45%)",
         ["n-light-gray"]: "hsl(223, 19%, 93%)",
         ["n-v-light-gray"]: "hsl(228, 33%, 97%)",
+      },
+      fontFamily: {
+        sans: ["Rubik", ...defaultTheme.fontFamily.sans],
       },
     },
   },
