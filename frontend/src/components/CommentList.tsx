@@ -6,8 +6,14 @@ interface Props extends CommentsData {
 }
 
 const CommentList = ({ comments, currentUser, isReplyList }: Props) => {
+  const defaultClass = "flex flex-col gap-4";
+
+  const className = isReplyList
+    ? `${defaultClass} pl-8 border-l-2 ml-8`
+    : defaultClass;
+
   return (
-    <ul className={`${isReplyList ? "pl-4 border-l" : ""}`}>
+    <ul className={className}>
       {comments.map((comment) => (
         <CommentItem
           key={comment.id}

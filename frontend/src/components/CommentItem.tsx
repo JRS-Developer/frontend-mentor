@@ -19,21 +19,33 @@ const CommentItem = ({ comment, currentUser }: Props) => {
 
   return (
     <>
-      <li className="flex">
-        <div className="flex flex-col">
+      <li className="flex bg-white rounded p-4 gap-4">
+        <div className="flex flex-col items-center justify-between bg-n-v-light-gray py-2 px-3 rounded w-12 h-24 gap-2">
           <button>
             <img src={PlusIcon} alt="plus" />
           </button>
-          <span>{comment.score}</span>
+          <span className="text-p-moderate-blue font-bold">
+            {comment.score}
+          </span>
           <button>
             <img src={MinusIcon} alt="minus" />
           </button>
         </div>
         <div>
           <div className="flex gap-2 items-center">
-            <img src={comment.user.image.png} alt={comment.user.username} />
-            <span>{comment.user.username}</span>
-            {comment.user.username === currentUser.username && <p>you</p>}
+            <img
+              className="h-8 w-8 rounded-full"
+              src={comment.user.image.png}
+              alt={comment.user.username}
+            />
+            <span className="text-n-dark-blue font-bold ml-1">
+              {comment.user.username}
+            </span>
+            {comment.user.username === currentUser.username && (
+              <p className="rounded font-bold bg-p-moderate-blue text-white px-1.5 py-px">
+                you
+              </p>
+            )}
             <span className="ml-2">{comment.createdAt}</span>
             <div className="flex gap-2 ml-auto">
               {comment.user.username === currentUser.username ? (
@@ -52,10 +64,10 @@ const CommentItem = ({ comment, currentUser }: Props) => {
               )}
             </div>
           </div>
-          <p>
+          <p className="mt-2">
             {comment.replyingTo ? (
               <>
-                <span>
+                <span className="text-p-moderate-blue">
                   <b>@{comment.replyingTo}</b>{" "}
                 </span>
                 {comment.content}

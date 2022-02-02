@@ -7,7 +7,10 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ startIcon, children, ...rest }: Props) => {
   return (
-    <button className="flex gap-2 items-center" {...rest}>
+    <button
+      className="flex gap-2 items-center text-p-moderate-blue font-bold"
+      {...rest}
+    >
       {startIcon}
       {children}
     </button>

@@ -7,7 +7,7 @@ interface Props extends ComponentFormProps {
 
 const CommentFormContainer = ({ currentUser, ...rest }: Props) => {
   return (
-    <div className="flex">
+    <div className="flex w-full bg-white">
       <img src={currentUser.image.png} alt={currentUser.username} />
       <CommentForm {...rest} />
     </div>
