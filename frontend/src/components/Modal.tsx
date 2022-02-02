@@ -10,9 +10,9 @@ interface Props {
 const Modal = ({ isOpen, onClose, title, children }: Props) => {
   useEffect(() => {
     if (isOpen) {
-      document.documentElement.style.overflow = "hidden";
+      document.documentElement.style.overflowY = "hidden";
     } else {
-      document.documentElement.style.overflow = "auto";
+      document.documentElement.style.overflowY = "auto";
     }
   }, [isOpen]);
 
