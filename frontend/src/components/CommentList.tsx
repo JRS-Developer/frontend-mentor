@@ -9,7 +9,7 @@ const CommentList = ({ comments, currentUser, isReplyList }: Props) => {
   const defaultClass = "flex flex-col gap-4";
 
   const className = isReplyList
-    ? `${defaultClass} pl-8 border-l-2 ml-8`
+    ? `${defaultClass} pl-4 border-l-2 ml-2 sm:ml-8 sm:pl-8`
     : defaultClass;
 
   return (

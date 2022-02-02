@@ -2,17 +2,29 @@ import { ButtonHTMLAttributes } from "react";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  disabled?: boolean;
   children: React.ReactNode;
 }
 
-const Button = ({ startIcon, children, ...rest }: Props) => {
+const Button = ({
+  startIcon,
+  endIcon,
+  children,
+  disabled,
+  className,
+  ...rest
+}: Props) => {
+  const defaultClasses =
+    "flex justify-center gap-2 items-center font-medium rounded-lg";
+
+  const classes = `${defaultClasses} ${className || ""}`;
+
   return (
-    <button
-      className="flex gap-2 items-center text-p-moderate-blue font-bold"
-      {...rest}
-    >
+    <button className={classes} disabled={disabled} {...rest}>
       {startIcon}
       {children}
+      {endIcon}
     </button>
   );
 };

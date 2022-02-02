@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-n-v-light-gray;
+body,
+html {
+  @apply bg-n-v-light-gray min-h-screen min-w-[100vw];
 }

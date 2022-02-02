@@ -30,11 +30,14 @@ export interface CommentsData {
 }
 
 // Componentes
-export interface ComponentFormProps
-  extends FormHTMLAttributes<HTMLFormElement> {
+export interface ComponentFormProps {
   initialInputValue?: string;
-  handleSubmit: () => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => any;
   buttonChildren?: ReactNode;
   formClasses?: string;
   placeholder?: string;
+  formAttrs?: FormHTMLAttributes<HTMLFormElement>;
+  showAvatar?: boolean;
+  showContainer?: boolean;
+  currentUser?: CurrentUser;
 }

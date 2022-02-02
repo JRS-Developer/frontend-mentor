@@ -1,12 +1,14 @@
 import { CurrentUser, Comment } from "../types/types";
-import PlusIcon from "../assets/images/icon-plus.svg";
-import MinusIcon from "../assets/images/icon-minus.svg";
-import ReplyIcon from "../assets/images/icon-reply.svg";
-import DeleteIcon from "../assets/images/icon-delete.svg";
-import EditIcon from "../assets/images/icon-edit.svg";
+import PlusIcon from "../assets/images/icon-plus.svg?component";
+import MinusIcon from "../assets/images/icon-minus.svg?component";
+import ReplyIcon from "../assets/images/icon-reply.svg?component";
+import DeleteIcon from "../assets/images/icon-delete.svg?component";
+import EditIcon from "../assets/images/icon-edit.svg?component";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import Button from "./Button";
+import Avatar from "./Avatar";
+import Modal from "./Modal";
 import { useState } from "react";
 
 interface Props {
@@ -16,27 +18,49 @@ interface Props {
 
 const CommentItem = ({ comment, currentUser }: Props) => {
   const [isReplying, setIsReplying] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const setNotEditing = () => setIsEditing(false);
+  const toggleEditing = () => setIsEditing((isEditing) => !isEditing);
+
+  const toggleReplying = () => setIsReplying((isReplying) => !isReplying);
+
+  const handleDelete = () => {
+    console.log("delete");
+    handleClose();
+  };
+
+  const handleEdit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setNotEditing();
+    console.log("edit");
+  };
 
   return (
     <>
-      <li className="flex bg-white rounded p-4 gap-4">
-        <div className="flex flex-col items-center justify-between bg-n-v-light-gray py-2 px-3 rounded w-12 h-24 gap-2">
-          <button>
-            <img src={PlusIcon} alt="plus" />
+      <li className="flex bg-white rounded-md p-4 gap-4">
+        <div className="hidden sm:flex flex-col items-center justify-between bg-n-v-light-gray py-2 px-3 rounded w-12 h-24 gap-2">
+          <button className="text-p-light-gray hover:text-p-moderate-blue">
+            <PlusIcon />
           </button>
-          <span className="text-p-moderate-blue font-bold">
+          <span className="text-p-moderate-blue font-medium">
             {comment.score}
           </span>
-          <button>
-            <img src={MinusIcon} alt="minus" />
+          <button className="text-p-light-gray hover:text-p-moderate-blue">
+            <MinusIcon />
           </button>
         </div>
-        <div>
+        <div className="w-full">
           <div className="flex gap-2 items-center">
-            <img
-              className="h-8 w-8 rounded-full"
+            <Avatar
               src={comment.user.image.png}
               alt={comment.user.username}
+              className="h-8 w-8"
             />
             <span className="text-n-dark-blue font-bold ml-1">
               {comment.user.username}
@@ -47,39 +71,108 @@ const CommentItem = ({ comment, currentUser }: Props) => {
               </p>
             )}
             <span className="ml-2">{comment.createdAt}</span>
-            <div className="flex gap-2 ml-auto">
+            <div className="hidden sm:flex gap-2 ml-auto">
               {comment.user.username === currentUser.username ? (
                 <>
-                  <Button startIcon={<img src={DeleteIcon} alt="delete" />}>
+                  <Button
+                    onClick={handleOpen}
+                    startIcon={<DeleteIcon />}
+                    className="text-p-soft-red hover:text-p-pale-red"
+                  >
                     Delete
                   </Button>
-                  <Button startIcon={<img src={EditIcon} alt="Edit" />}>
+                  <Button
+                    className="text-p-moderate-blue hover:text-p-light-gray"
+                    startIcon={<EditIcon />}
+                    onClick={toggleEditing}
+                  >
                     Edit
                   </Button>
                 </>
               ) : (
-                <Button startIcon={<img src={ReplyIcon} alt="reply" />}>
+                <Button
+                  className="text-p-moderate-blue hover:text-p-light-gray"
+                  startIcon={<ReplyIcon />}
+                  onClick={toggleReplying}
+                >
                   Reply
                 </Button>
               )}
             </div>
           </div>
-          <p className="mt-2">
-            {comment.replyingTo ? (
-              <>
+          {isEditing ? (
+            <CommentForm
+              handleSubmit={handleEdit}
+              initialInputValue={
+                comment.replyingTo
+                  ? `@${comment.replyingTo} ${comment.content}`
+                  : comment.content
+              }
+              formClasses="mt-2 w-full"
+              buttonChildren="UPDATE"
+            />
+          ) : (
+            <p className="mt-2">
+              {comment.replyingTo && (
                 <span className="text-p-moderate-blue">
                   <b>@{comment.replyingTo}</b>{" "}
                 </span>
-                {comment.content}
-              </>
-            ) : (
-              <>{comment.content}</>
-            )}
-          </p>
+              )}
+              {comment.content}
+            </p>
+          )}
+          <footer className="flex sm:hidden mt-2">
+            <div className="flex items-center justify-between bg-n-v-light-gray py-2 px-3 rounded gap-4">
+              <button className="text-p-light-gray hover:text-p-moderate-blue">
+                <PlusIcon />
+              </button>
+              <span className="text-p-moderate-blue font-medium">
+                {comment.score}
+              </span>
+              <button className="text-p-light-gray hover:text-p-moderate-blue">
+                <MinusIcon />
+              </button>
+            </div>
+            <div className="flex gap-2 ml-auto ">
+              {comment.user.username === currentUser.username ? (
+                <>
+                  <Button
+                    onClick={handleOpen}
+                    startIcon={<DeleteIcon />}
+                    className="text-p-soft-red hover:text-p-pale-red"
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    className="text-p-moderate-blue hover:text-p-light-gray"
+                    startIcon={<EditIcon />}
+                    onClick={toggleEditing}
+                  >
+                    Edit
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  className="text-p-moderate-blue hover:text-p-light-gray"
+                  startIcon={<ReplyIcon />}
+                  onClick={toggleReplying}
+                >
+                  Reply
+                </Button>
+              )}
+            </div>
+          </footer>
         </div>
       </li>
       {isReplying && (
-        <CommentForm buttonChildren="REPLY" handleSubmit={() => {}} />
+        <CommentForm
+          showContainer={true}
+          currentUser={currentUser}
+          showAvatar={true}
+          buttonChildren="REPLY"
+          handleSubmit={() => {}}
+          formClasses="flex flex-col sm:flex-row gap-4"
+        />
       )}
       {comment.replies?.length ? (
         <CommentList
@@ -88,6 +181,28 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           isReplyList
         />
       ) : null}
+      <Modal isOpen={open} onClose={handleClose} title="Delete comment">
+        <div className="h-full flex flex-col gap-4">
+          <p>
+            Are you sure you want to delete this comment? This will remove the
+            comment and can't be undone
+          </p>
+          <div className="mt-auto flex gap-4">
+            <Button
+              onClick={handleClose}
+              className="rounded-md bg-n-gray-blue hover:bg-n-light-gray hover:text-n-gray-blue text-white px-4 py-2 w-full"
+            >
+              NO, CANCEL
+            </Button>
+            <Button
+              onClick={handleDelete}
+              className="bg-p-soft-red hover:bg-p-pale-red text-white px-4 py-2 rounded-md w-full"
+            >
+              YES, DELETE
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
