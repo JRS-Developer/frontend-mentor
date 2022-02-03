@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Avatar = ({ src, alt, className = "" }: Props) => {
-  const classes = `rouded-full ${className}`;
+  const classes = `rounded-full ${className}`;
 
   return (
     <>
