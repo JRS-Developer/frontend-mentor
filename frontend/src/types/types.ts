@@ -2,7 +2,7 @@ import { FormHTMLAttributes, ReactNode } from "react";
 
 export interface Image {
   png: string;
-  webp: string;
+  webp?: string;
 }
 
 export interface CurrentUser extends User {}
