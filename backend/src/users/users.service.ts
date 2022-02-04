@@ -15,10 +15,18 @@ export class UsersService {
     return user.save();
   }
 
-  findUser(username: string): Promise<User> {
+  findOneByUsername(username: string): Promise<User> {
     return this.userModel.findOne({
       where: {
         username,
+      },
+    });
+  }
+
+  findOneById(id: number): Promise<User> {
+    return this.userModel.findOne({
+      where: {
+        id,
       },
     });
   }

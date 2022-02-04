@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './models/user.model';
 import { UsersService } from './users.service';
@@ -7,9 +14,14 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('user')
-  findUser(@Query('username') username: string): Promise<User> {
-    return this.usersService.findUser(username);
+  @Get(':username')
+  async findUser(@Param('username') username: string): Promise<User> {
+    const user = await this.usersService.findOneByUsername(username);
+
+    if (!user) {
+      throw new NotFoundException(user, 'User not found');
+    }
+    return user;
   }
 
   @Post()
