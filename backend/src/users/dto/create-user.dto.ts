@@ -1,4 +1,10 @@
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+
 export class CreateUserDto {
+  @IsNotEmpty()
   username: string;
-  image: string;
+
+  @IsString()
+  @IsOptional()
+  image?: string;
 }
