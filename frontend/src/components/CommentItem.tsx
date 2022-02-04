@@ -1,4 +1,5 @@
 import { CurrentUser, Comment } from "../types/types";
+import { formatDistanceToNow } from "date-fns";
 import PlusIcon from "../assets/images/icon-plus.svg?component";
 import MinusIcon from "../assets/images/icon-minus.svg?component";
 import ReplyIcon from "../assets/images/icon-reply.svg?component";
@@ -10,6 +11,8 @@ import Button from "./Button";
 import Avatar from "./Avatar";
 import Modal from "./Modal";
 import { useState } from "react";
+import { deleteComment, saveComment, updateComment } from "../services/comment";
+import { useMutation, useQueryClient } from "react-query";
 
 interface Props {
   currentUser: CurrentUser;
@@ -19,6 +22,31 @@ interface Props {
 const CommentItem = ({ comment, currentUser }: Props) => {
   const [isReplying, setIsReplying] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+
+  const queryClient = useQueryClient();
+
+  const replyMutation = useMutation(saveComment, {
+    onSuccess: () => {
+      setIsReplying(false);
+      queryClient.invalidateQueries("comments");
+    },
+  });
+
+  const deleteMutation = useMutation(deleteComment, {
+    onSuccess: () => {
+      handleClose();
+      queryClient.invalidateQueries("comments");
+    },
+  });
+
+  const editMutation = useMutation(updateComment, {
+    onSuccess: () => {
+      setIsEditing(false);
+      queryClient.invalidateQueries("comments");
+    },
+  });
+
+  const [reply, setReply] = useState("");
 
   const [open, setOpen] = useState(false);
 
@@ -31,15 +59,35 @@ const CommentItem = ({ comment, currentUser }: Props) => {
   const toggleReplying = () => setIsReplying((isReplying) => !isReplying);
 
   const handleDelete = () => {
-    console.log("delete");
-    handleClose();
+    deleteMutation.mutate(comment.id);
   };
 
   const handleEdit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setNotEditing();
-    console.log("edit");
+
+    const changes = {
+      commentId: comment.id,
+      content: reply,
+    };
+
+    editMutation.mutate(changes);
   };
+
+  const handleReply = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newReply = {
+      content: reply,
+      userId: currentUser.id,
+      parentId: comment.id,
+    };
+
+    replyMutation.mutate(newReply);
+  };
+
+  const handleChangeReply = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setReply(e.target.value);
 
   return (
     <>
@@ -58,7 +106,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
         <div className="w-full">
           <div className="flex gap-2 items-center">
             <Avatar
-              src={comment.user.image.png}
+              src={comment.user.image}
               alt={comment.user.username}
               className="h-8 w-8"
             />
@@ -70,7 +118,9 @@ const CommentItem = ({ comment, currentUser }: Props) => {
                 you
               </p>
             )}
-            <span className="ml-2">{comment.createdAt}</span>
+            <span className="ml-2">
+              {formatDistanceToNow(new Date(comment.createdAt))}
+            </span>
             <div className="hidden sm:flex gap-2 ml-auto">
               {comment.user.username === currentUser.username ? (
                 <>
@@ -170,7 +220,8 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           currentUser={currentUser}
           showAvatar={true}
           buttonChildren="REPLY"
-          handleSubmit={() => {}}
+          handleSubmit={handleReply}
+          handleChange={handleChangeReply}
           formClasses="flex flex-col sm:flex-row gap-4"
         />
       )}

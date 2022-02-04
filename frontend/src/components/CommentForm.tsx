@@ -4,6 +4,7 @@ import Avatar from "./Avatar";
 
 const CommentForm = ({
   handleSubmit,
+  handleChange,
   initialInputValue,
   buttonChildren = "SEND",
   formClasses = "",
@@ -15,7 +16,7 @@ const CommentForm = ({
 }: ComponentFormProps) => {
   const defaultClasses = "flex gap-4";
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleResize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const target = e.target as HTMLTextAreaElement;
 
     // This is to change the height of the textarea when the user is typing, this avoid to show the scrollbar
@@ -32,7 +33,7 @@ const CommentForm = ({
       {showAvatar && currentUser ? (
         <Avatar
           className="h-8 w-8 hidden sm:block"
-          src={currentUser.image.png}
+          src={currentUser.image}
           alt={currentUser.username}
         />
       ) : null}
@@ -42,13 +43,16 @@ const CommentForm = ({
         placeholder={placeholder}
         rows={3}
         defaultValue={initialInputValue}
-        onChange={handleChange}
+        onChange={(e) => {
+          handleChange && handleChange(e);
+          handleResize(e);
+        }}
       ></textarea>
       <div className="flex items-center sm:items-start">
         {showAvatar && currentUser && (
           <Avatar
             className="h-8 w-8 sm:hidden"
-            src={currentUser.image.png}
+            src={currentUser.image}
             alt={currentUser.username}
           />
         )}

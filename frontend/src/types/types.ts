@@ -1,14 +1,10 @@
 import { FormHTMLAttributes, ReactNode } from "react";
 
-export interface Image {
-  png: string;
-  webp?: string;
-}
-
 export interface CurrentUser extends User {}
 
 export interface User {
-  image: Image;
+  id: number;
+  image: string | null;
   username: string;
 }
 
@@ -33,6 +29,7 @@ export interface CommentsData {
 export interface ComponentFormProps {
   initialInputValue?: string;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => any;
+  handleChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => any;
   buttonChildren?: ReactNode;
   formClasses?: string;
   placeholder?: string;

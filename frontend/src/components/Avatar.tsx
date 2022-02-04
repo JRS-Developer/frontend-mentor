@@ -1,15 +1,22 @@
 interface Props {
-  src: string;
+  src?: string | null | undefined;
   alt: string;
   className?: string;
 }
 
 const Avatar = ({ src, alt, className = "" }: Props) => {
-  const classes = `rounded-full ${className}`;
+  const imgClasses = `rounded-full ${className}`;
+  const noImgClasses = `rounded-full p-4 bg-p-moderate-blue text-white flex justify-ceter items-center ${className}`;
 
   return (
     <>
-      <img src={src} alt={alt} className={classes} />
+      {src ? (
+        <img src={src} alt={alt} className={imgClasses} />
+      ) : (
+        <div className={noImgClasses}>
+          <span>{alt.charAt(0)}</span>
+        </div>
+      )}
     </>
   );
 };
