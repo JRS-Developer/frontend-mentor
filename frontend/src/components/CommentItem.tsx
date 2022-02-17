@@ -22,6 +22,9 @@ interface Props {
 const CommentItem = ({ comment, currentUser }: Props) => {
   const [isReplying, setIsReplying] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [reply, setReply] = useState("");
+  const [edit, setEdit] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -232,7 +235,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           isReplyList
         />
       ) : null}
-      <Modal isOpen={open} onClose={handleClose} title="Delete comment">
+      <Modal isOpen={openModal} onClose={handleClose} title="Delete comment">
         <div className="h-full flex flex-col gap-4">
           <p>
             Are you sure you want to delete this comment? This will remove the
