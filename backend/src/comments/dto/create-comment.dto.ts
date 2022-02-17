@@ -1,4 +1,3 @@
-import { Comment } from '../models/comment.model';
 import { IsNotEmpty, IsString, IsInt, IsOptional } from 'class-validator';
 
 export class CreateCommentDto {
@@ -13,13 +12,4 @@ export class CreateCommentDto {
   @IsInt()
   @IsOptional()
   parentId?: number;
-}
-
-export class AdditionalCommentInfo {
-  @IsInt()
-  @IsOptional()
-  count?: number;
-
-  @IsOptional()
-  replies?: Comment[];
 }
