@@ -6,6 +6,7 @@ import {
   BelongsTo,
   ForeignKey,
 } from 'sequelize-typescript';
+import { Like } from '../../likes/models/like.model';
 import { User } from '../../users/models/user.model';
 
 @Table
@@ -31,4 +32,7 @@ export class Comment extends Model {
 
   @HasMany(() => Comment)
   replies: Comment[];
+
+  @HasMany(() => Like)
+  likes: Like[];
 }
