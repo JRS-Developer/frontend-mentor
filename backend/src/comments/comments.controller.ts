@@ -9,6 +9,7 @@ import {
   ParseIntPipe,
   NotFoundException,
 } from '@nestjs/common';
+import { LikesService } from 'src/likes/likes.service';
 import { UsersService } from 'src/users/users.service';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
@@ -19,6 +20,7 @@ export class CommentsController {
   constructor(
     private readonly commentsService: CommentsService,
     private readonly usersService: UsersService,
+    private readonly likesService: LikesService,
   ) {}
 
   @Post()
@@ -39,8 +41,7 @@ export class CommentsController {
       }
     }
 
-    const newComment = await this.commentsService.create(createCommentDto);
-    return this.findOne(newComment.id);
+    return await this.commentsService.create(createCommentDto);
   }
 
   @Get()
@@ -65,13 +66,66 @@ export class CommentsController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateCommentDto: UpdateCommentDto,
   ) {
-    const [num, rows] = await this.commentsService.update(id, updateCommentDto);
+    const comment = await this.commentsService.findOne(id);
 
-    if (!num) {
-      throw new NotFoundException(updateCommentDto, 'Comment not found');
+    if (!comment) {
+      throw new NotFoundException(comment, 'Comment not found');
     }
 
+    const [, rows] = await this.commentsService.update(id, updateCommentDto);
+
     return rows[0];
+  }
+
+  @Put(':id/upvote')
+  async upvote(
+    @Param('id', ParseIntPipe) id: number,
+    @Body('userId', ParseIntPipe) userId: number,
+  ) {
+    const comment = await this.commentsService.findOne(id);
+    if (!comment) throw new NotFoundException(comment, 'Comment not found');
+
+    const user = await this.usersService.findOneById(userId);
+    if (!user) throw new NotFoundException(user, 'User not found');
+
+    const isUpvoted = await this.likesService.findOne({
+      userId,
+      commentId: comment.id,
+    });
+
+    if (isUpvoted) return { upvoted: false };
+
+    await this.likesService.create({
+      userId,
+      commentId: comment.id,
+    });
+
+    return {
+      upvoted: true,
+    };
+  }
+
+  @Put(':id/downvote')
+  async downvote(
+    @Param('id', ParseIntPipe) id: number,
+    @Body('userId', ParseIntPipe) userId: number,
+  ) {
+    const comment = await this.commentsService.findOne(id);
+    if (!comment) throw new NotFoundException(comment, 'Comment not found');
+
+    const user = await this.usersService.findOneById(userId);
+    if (!user) throw new NotFoundException(user, 'User not found');
+
+    const like = await this.likesService.findOne({
+      userId,
+      commentId: comment.id,
+    });
+
+    like && (await this.likesService.remove(like.id));
+
+    return {
+      message: 'Comment downvoted',
+    };
   }
 
   @Delete(':id')
