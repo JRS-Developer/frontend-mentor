@@ -15,9 +15,9 @@ export class Comment extends Model {
   content: string;
 
   @Column({
-    defaultValue: 0,
+    defaultValue: true,
   })
-  score: number;
+  status: boolean;
 
   @ForeignKey(() => User)
   @Column

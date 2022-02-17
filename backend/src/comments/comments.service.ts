@@ -94,9 +94,14 @@ export class CommentsService {
     });
   }
 
-  remove(id: number): Promise<number> {
-    return this.commentModel.destroy({
-      where: { id },
-    });
+  remove(id: number) {
+    return this.commentModel.update(
+      {
+        status: false,
+      },
+      {
+        where: { id },
+      },
+    );
   }
 }
