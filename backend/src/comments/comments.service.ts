@@ -4,6 +4,8 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { Comment } from './models/comment.model';
 import { User } from '../users/models/user.model';
+import { Like } from '../likes/models/like.model';
+import { Sequelize } from 'sequelize-typescript';
 
 @Injectable()
 export class CommentsService {
@@ -19,16 +21,39 @@ export class CommentsService {
 
   findAll(): Promise<Comment[]> {
     return this.commentModel.findAll({
-      include: [User],
+      attributes: {
+        include: [[Sequelize.fn('COUNT', Sequelize.col('likes.id')), 'score']],
+      },
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ['createdAt', 'updatedAt'],
+          },
+        },
+        {
+          model: Like,
+          attributes: [],
+        },
+      ],
       raw: true,
       nest: true,
+      group: ['Comment.id', 'user.id', 'likes.id'],
+      order: [['createdAt', 'ASC']],
+      where: {
+        status: true,
+      },
     });
   }
 
   findOne(id: number): Promise<Comment> {
-    return this.commentModel.findByPk(id, {
-      include: [User, Comment],
+    return this.commentModel.findOne({
+      include: [User, Comment, Like],
       order: [['createdAt', 'DESC']],
+      where: {
+        status: true,
+        id,
+      },
     });
   }
 
