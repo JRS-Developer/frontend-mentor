@@ -22,7 +22,7 @@ export interface Comment {
 
 export interface CommentsData {
   currentUser: CurrentUser;
-  comments: Comment[];
+  comments?: Comment[];
 }
 
 // Componentes
