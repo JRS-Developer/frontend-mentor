@@ -4,8 +4,8 @@ import CommentForm from "../components/CommentForm";
 import { getRandomUser } from "../services/randomUser";
 import { CurrentUser, Comment } from "../types/types";
 import { saveUser } from "../services/user";
-import { useMutation, useQuery } from "react-query";
-import { getComments } from "../services/comment";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { getComments, saveComment } from "../services/comment";
 
 const getLocalUser = (): CurrentUser | null => {
   const localUser = localStorage.getItem("currentUser");
@@ -18,11 +18,20 @@ const getLocalUser = (): CurrentUser | null => {
 
 const Comments = () => {
   const [user, setUser] = useState(getLocalUser());
+  const [input, setInput] = useState("");
 
-  const mutation = useMutation(saveUser, {
+  const queryClient = useQueryClient();
+
+  const createUserMutation = useMutation(saveUser, {
     onSuccess: (data: CurrentUser) => {
       localStorage.setItem("currentUser", JSON.stringify(data));
       setUser(data);
+    },
+  });
+
+  const createCommentMutation = useMutation(saveComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("comments");
     },
   });
 
@@ -41,7 +50,24 @@ const Comments = () => {
       image: user.picture.medium,
     };
 
-    mutation.mutate(newCurrentUser);
+    createUserMutation.mutate(newCurrentUser);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setInput(e.target.value);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!input.length || !user?.id) return;
+
+    const comment = {
+      content: input,
+      userId: user?.id,
+    };
+
+    setInput("");
+    createCommentMutation.mutate(comment);
   };
 
   useEffect(() => {
@@ -61,12 +87,14 @@ const Comments = () => {
   const renderComments = () => {
     return (
       <>
-        {user && comments?.length ? (
+        {user ? (
           <>
             <CommentList comments={comments} currentUser={user} />
             <CommentForm
               currentUser={user}
-              handleSubmit={() => {}}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              value={input}
               formClasses="flex flex-col sm:flex-row gap-4"
               showContainer={true}
               showAvatar={true}
