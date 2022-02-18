@@ -10,7 +10,15 @@ const CommentList = ({ comments, currentUser, isReplyList }: Props) => {
 
   const className = isReplyList
     ? `${defaultClass} pl-4 border-l-2 ml-2 sm:ml-8 sm:pl-8`
-    : defaultClass;
+    : `${defaultClass} w-full`;
+
+  if (!comments?.length) {
+    return (
+      <div className={className}>
+        <p className="text-gray-500">No comments yet.</p>
+      </div>
+    );
+  }
 
   return (
     <ul className={className}>
