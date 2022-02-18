@@ -76,7 +76,10 @@ const CommentItem = ({ comment, currentUser }: Props) => {
   const toggleReplying = () => setIsReplying((isReplying) => !isReplying);
 
   const handleDelete = () => {
-    deleteMutation.mutate(comment.id);
+    deleteMutation.mutate({
+      commentId: comment.id,
+      userId: currentUser.id,
+    });
   };
 
   const handleEdit = (e: React.FormEvent<HTMLFormElement>) => {

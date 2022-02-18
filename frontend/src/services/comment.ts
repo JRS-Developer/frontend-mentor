@@ -66,6 +66,11 @@ export const downvoteComment = async ({
   return comment.data;
 };
 
-export const deleteComment = async (id: Comment["id"]) => {
-  return await axios.delete(`${apiUrl}/comments/${id}`);
+export const deleteComment = async ({
+  commentId,
+  userId,
+}: removeCommentProps) => {
+  return await axios.delete(`${apiUrl}/comments/${commentId}`, {
+    data: { userId },
+  });
 };
