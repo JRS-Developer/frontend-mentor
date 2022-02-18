@@ -5,6 +5,7 @@ import Avatar from "./Avatar";
 const CommentForm = ({
   handleSubmit,
   handleChange,
+  value,
   initialInputValue,
   buttonChildren = "SEND",
   formClasses = "",
@@ -47,6 +48,7 @@ const CommentForm = ({
           handleChange && handleChange(e);
           handleResize(e);
         }}
+        value={value}
       ></textarea>
       <div className="flex items-center sm:items-start">
         {showAvatar && currentUser && (

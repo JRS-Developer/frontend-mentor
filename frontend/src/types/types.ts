@@ -30,6 +30,7 @@ export interface ComponentFormProps {
   initialInputValue?: string;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => any;
   handleChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => any;
+  value?: string;
   buttonChildren?: ReactNode;
   formClasses?: string;
   placeholder?: string;
