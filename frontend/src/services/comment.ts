@@ -2,23 +2,24 @@ import axios from "axios";
 import { apiUrl } from "../config/api";
 import { Comment, User } from "../types/types";
 
+interface CommentProps {
+  commentId: number;
+  userId: User["id"];
+}
+
 interface saveCommentProps {
   content: string;
   parentId?: number;
   userId: User["id"];
 }
 
-interface updateCommentProps extends Pick<Comment, "content"> {
-  commentId: number;
-  userId: User["id"];
-}
+interface updateCommentProps extends CommentProps, Pick<Comment, "content"> {}
 
-interface upvoteCommentProps {
-  commentId: number;
-  userId: User["id"];
-}
+interface upvoteCommentProps extends CommentProps {}
 
-interface downvoteCommentProps extends upvoteCommentProps {}
+interface downvoteCommentProps extends CommentProps {}
+
+interface removeCommentProps extends CommentProps {}
 
 export const getComments = async (): Promise<Comment[]> => {
   const comments = await axios.get<Comment[]>(`${apiUrl}/comments`);
