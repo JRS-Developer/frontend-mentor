@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { CommentsModule } from './comments/comments.module';
 import { LikesModule } from './likes/likes.module';
+import { getDBConfig } from './config/database';
 import * as Joi from 'joi';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
@@ -20,19 +21,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        dialect: 'postgres',
-        host: configService.get('DB_HOST'),
-        port: configService.get('DB_PORT'),
-        database: configService.get('DB_NAME'),
-        username: configService.get('DB_USER'),
-        password: configService.get('DB_PASSWORD'),
-        synchronize: true,
-        autoLoadModels: true,
-        sync: {
-          alter: true,
-        },
-      }),
+      useFactory: getDBConfig,
       inject: [ConfigService],
     }),
     CacheModule.register({
