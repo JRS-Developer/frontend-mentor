@@ -79,7 +79,7 @@ const Comments = () => {
 
   return (
     <main className="min-h-screen text-n-gray-blue py-8 px-4 sm:py-12 sm:px-0">
-      <div className="flex flex-col justify-center items-center sm:w-3/5 m-auto gap-4">
+      <div className="flex flex-col justify-center items-center sm:w-11/12 md:w-3/4 lg:w-3/5 m-auto gap-4">
         {isLoading
           ? renderLoading()
           : isError
