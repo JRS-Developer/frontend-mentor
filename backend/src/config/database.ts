@@ -2,7 +2,8 @@ import { ConfigService } from '@nestjs/config';
 import { SequelizeModuleOptions } from '@nestjs/sequelize';
 import { parse } from 'pg-connection-string';
 
-const defaultOptions = {
+const defaultOptions: SequelizeModuleOptions = {
+  dialect: 'postgres',
   synchronize: true,
   autoLoadModels: true,
   sync: {
@@ -23,9 +24,17 @@ const getProdConfig = (
   const parser = parse(DATABASE_URL);
 
   return {
-    ...parser,
+    username: parser.user,
+    database: parser.database,
+    password: parser.password,
+    host: parser.host,
     port: parseInt(parser.port, 10),
-    ssl: Boolean(parser.ssl),
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
     ...defaultOptions,
   };
 };
@@ -33,7 +42,6 @@ const getProdConfig = (
 const getDEVConfig = (
   configService: ConfigService,
 ): SequelizeModuleOptions => ({
-  dialect: 'postgres',
   host: configService.get('DB_HOST'),
   port: configService.get('DB_PORT'),
   database: configService.get('DB_NAME'),
