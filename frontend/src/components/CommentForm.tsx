@@ -33,14 +33,13 @@ const CommentForm = ({
     >
       {showAvatar && currentUser ? (
         <Avatar
-          className="h-8 w-8 hidden sm:block"
+          className="hidden w-8 h-8 sm:block"
           src={currentUser.image}
           alt={currentUser.username}
         />
       ) : null}
       <textarea
-        className="outline outline-1 text-n-dark-blue caret-p-moderate-blue outline-n-light-gray rounded-md py-2 px-4 focus-visible:outline-1 focus-visible:outline-p-moderate-blue resize-none 
-  w-full"
+        className="py-2 px-4 w-full rounded-md resize-none outline outline-1 text-n-dark-blue caret-p-moderate-blue outline-n-light-gray focus-visible:outline-1 focus-visible:outline-p-moderate-blue"
         placeholder={placeholder}
         rows={3}
         defaultValue={initialInputValue}
@@ -53,14 +52,14 @@ const CommentForm = ({
       <div className="flex items-center sm:items-start">
         {showAvatar && currentUser && (
           <Avatar
-            className="h-8 w-8 sm:hidden"
+            className="w-8 h-8 sm:hidden"
             src={currentUser.image}
             alt={currentUser.username}
           />
         )}
         <Button
           type="submit"
-          className="text-white bg-p-moderate-blue hover:bg-p-light-gray p-2 px-6 h-12 ml-auto"
+          className="p-2 px-6 ml-auto h-12 text-white bg-p-moderate-blue hover:bg-p-light-gray"
         >
           {buttonChildren}
         </Button>
@@ -71,7 +70,7 @@ const CommentForm = ({
   return (
     <>
       {showContainer ? (
-        <div className=" w-full bg-white p-4">{renderForm()}</div>
+        <div className="p-4 w-full bg-white">{renderForm()}</div>
       ) : (
         renderForm()
       )}

@@ -125,15 +125,15 @@ const CommentItem = ({ comment, currentUser }: Props) => {
 
   return (
     <>
-      <li className="flex bg-white rounded-md p-4 gap-4">
-        <div className="hidden sm:flex flex-col items-center justify-between bg-n-v-light-gray py-2 px-3 rounded w-12 h-24 gap-2">
+      <li className="flex gap-4 p-4 bg-white rounded-md">
+        <div className="hidden flex-col gap-2 justify-between items-center py-2 px-3 w-12 h-24 rounded sm:flex bg-n-v-light-gray">
           <button
             className="text-p-light-gray hover:text-p-moderate-blue"
             onClick={handleUpvote}
           >
             <PlusIcon />
           </button>
-          <span className="text-p-moderate-blue font-medium">
+          <span className="font-medium text-p-moderate-blue">
             {comment.score}
           </span>
           <button
@@ -148,20 +148,20 @@ const CommentItem = ({ comment, currentUser }: Props) => {
             <Avatar
               src={comment.user.image}
               alt={comment.user.username}
-              className="h-8 w-8"
+              className="w-8 h-8"
             />
-            <span className="text-n-dark-blue font-bold ml-1">
+            <span className="ml-1 font-bold text-n-dark-blue">
               {comment.user.username}
             </span>
             {comment.user.username === currentUser.username && (
-              <p className="rounded font-bold bg-p-moderate-blue text-white px-1.5 py-px">
+              <p className="py-px px-1.5 font-bold text-white rounded bg-p-moderate-blue">
                 you
               </p>
             )}
             <span className="ml-2">
               {formatDistanceToNow(new Date(comment.createdAt))}
             </span>
-            <div className="hidden sm:flex gap-2 ml-auto">
+            <div className="hidden gap-2 ml-auto sm:flex">
               {comment.user.username === currentUser.username ? (
                 <>
                   <Button
@@ -212,15 +212,15 @@ const CommentItem = ({ comment, currentUser }: Props) => {
               {comment.content}
             </p>
           )}
-          <footer className="flex sm:hidden mt-2">
-            <div className="flex items-center justify-between bg-n-v-light-gray py-2 px-3 rounded gap-4">
+          <footer className="flex mt-2 sm:hidden">
+            <div className="flex gap-4 justify-between items-center py-2 px-3 rounded bg-n-v-light-gray">
               <button
                 className="text-p-light-gray hover:text-p-moderate-blue"
                 onClick={handleUpvote}
               >
                 <PlusIcon />
               </button>
-              <span className="text-p-moderate-blue font-medium">
+              <span className="font-medium text-p-moderate-blue">
                 {comment.score}
               </span>
               <button
@@ -230,7 +230,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
                 <MinusIcon />
               </button>
             </div>
-            <div className="flex gap-2 ml-auto ">
+            <div className="flex gap-2 ml-auto">
               {comment.user.username === currentUser.username ? (
                 <>
                   <Button
@@ -280,21 +280,21 @@ const CommentItem = ({ comment, currentUser }: Props) => {
         />
       ) : null}
       <Modal isOpen={openModal} onClose={handleClose} title="Delete comment">
-        <div className="h-full flex flex-col gap-4">
+        <div className="flex flex-col gap-4 h-full">
           <p>
             Are you sure you want to delete this comment? This will remove the
             comment and can't be undone
           </p>
-          <div className="mt-auto flex gap-4">
+          <div className="flex gap-4 mt-auto">
             <Button
               onClick={handleClose}
-              className="rounded-md bg-n-gray-blue hover:bg-n-light-gray hover:text-n-gray-blue text-white px-4 py-2 w-full"
+              className="py-2 px-4 w-full text-white rounded-md bg-n-gray-blue hover:bg-n-light-gray hover:text-n-gray-blue"
             >
               NO, CANCEL
             </Button>
             <Button
               onClick={handleDelete}
-              className="bg-p-soft-red hover:bg-p-pale-red text-white px-4 py-2 rounded-md w-full"
+              className="py-2 px-4 w-full text-white rounded-md bg-p-soft-red hover:bg-p-pale-red"
             >
               YES, DELETE
             </Button>
