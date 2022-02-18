@@ -11,7 +11,13 @@ import Button from "./Button";
 import Avatar from "./Avatar";
 import Modal from "./Modal";
 import { useState } from "react";
-import { deleteComment, saveComment, updateComment } from "../services/comment";
+import {
+  deleteComment,
+  downvoteComment,
+  saveComment,
+  updateComment,
+  upvoteComment,
+} from "../services/comment";
 import { useMutation, useQueryClient } from "react-query";
 
 interface Props {
@@ -49,12 +55,20 @@ const CommentItem = ({ comment, currentUser }: Props) => {
     },
   });
 
-  const [reply, setReply] = useState("");
+  const upvoteMutation = useMutation(upvoteComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("comments");
+    },
+  });
 
-  const [open, setOpen] = useState(false);
+  const downVoteMutation = useMutation(downvoteComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("comments");
+    },
+  });
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpenModal(true);
+  const handleClose = () => setOpenModal(false);
 
   const setNotEditing = () => setIsEditing(false);
   const toggleEditing = () => setIsEditing((isEditing) => !isEditing);
@@ -71,11 +85,16 @@ const CommentItem = ({ comment, currentUser }: Props) => {
 
     const changes = {
       commentId: comment.id,
-      content: reply,
+      userId: currentUser.id,
+      content: edit,
     };
 
     editMutation.mutate(changes);
+    setEdit("");
   };
+
+  const handleChangeEdit = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setEdit(e.target.value);
 
   const handleReply = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -92,17 +111,35 @@ const CommentItem = ({ comment, currentUser }: Props) => {
   const handleChangeReply = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setReply(e.target.value);
 
+  const handleUpvote = () =>
+    upvoteMutation.mutate({
+      commentId: comment.id,
+      userId: currentUser.id,
+    });
+
+  const handleDownvote = () =>
+    downVoteMutation.mutate({
+      commentId: comment.id,
+      userId: currentUser.id,
+    });
+
   return (
     <>
       <li className="flex bg-white rounded-md p-4 gap-4">
         <div className="hidden sm:flex flex-col items-center justify-between bg-n-v-light-gray py-2 px-3 rounded w-12 h-24 gap-2">
-          <button className="text-p-light-gray hover:text-p-moderate-blue">
+          <button
+            className="text-p-light-gray hover:text-p-moderate-blue"
+            onClick={handleUpvote}
+          >
             <PlusIcon />
           </button>
           <span className="text-p-moderate-blue font-medium">
             {comment.score}
           </span>
-          <button className="text-p-light-gray hover:text-p-moderate-blue">
+          <button
+            className="text-p-light-gray hover:text-p-moderate-blue"
+            onClick={handleDownvote}
+          >
             <MinusIcon />
           </button>
         </div>
@@ -156,6 +193,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           {isEditing ? (
             <CommentForm
               handleSubmit={handleEdit}
+              handleChange={handleChangeEdit}
               initialInputValue={
                 comment.replyingTo
                   ? `@${comment.replyingTo} ${comment.content}`
@@ -176,13 +214,19 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           )}
           <footer className="flex sm:hidden mt-2">
             <div className="flex items-center justify-between bg-n-v-light-gray py-2 px-3 rounded gap-4">
-              <button className="text-p-light-gray hover:text-p-moderate-blue">
+              <button
+                className="text-p-light-gray hover:text-p-moderate-blue"
+                onClick={handleUpvote}
+              >
                 <PlusIcon />
               </button>
               <span className="text-p-moderate-blue font-medium">
                 {comment.score}
               </span>
-              <button className="text-p-light-gray hover:text-p-moderate-blue">
+              <button
+                className="text-p-light-gray hover:text-p-moderate-blue"
+                onClick={handleDownvote}
+              >
                 <MinusIcon />
               </button>
             </div>
