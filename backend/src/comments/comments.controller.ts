@@ -8,6 +8,7 @@ import {
   Delete,
   ParseIntPipe,
   NotFoundException,
+  ForbiddenException,
 } from '@nestjs/common';
 import { LikesService } from 'src/likes/likes.service';
 import { UsersService } from 'src/users/users.service';
@@ -72,6 +73,12 @@ export class CommentsController {
       throw new NotFoundException(comment, 'Comment not found');
     }
 
+    if (comment.userId !== updateCommentDto.userId) {
+      throw new ForbiddenException(
+        'You are not allowed to update this comment',
+      );
+    }
+
     const [, rows] = await this.commentsService.update(id, updateCommentDto);
 
     return rows[0];
@@ -129,7 +136,22 @@ export class CommentsController {
   }
 
   @Delete(':id')
-  async remove(@Param('id', ParseIntPipe) id: number) {
+  async remove(
+    @Param('id', ParseIntPipe) id: number,
+    @Body('userId', ParseIntPipe) userId: number,
+  ) {
+    const user = await this.usersService.findOneById(userId);
+    if (!user) throw new NotFoundException(user, 'User not found');
+
+    const comment = await this.commentsService.findOne(id);
+    if (!comment) throw new NotFoundException(comment, 'Comment not found');
+
+    if (comment.userId !== userId) {
+      throw new ForbiddenException(
+        'You are not allowed to delete this comment',
+      );
+    }
+
     await this.commentsService.remove(id);
 
     return {
