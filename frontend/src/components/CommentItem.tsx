@@ -133,6 +133,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           <button
             className="text-p-light-gray hover:text-p-moderate-blue"
             onClick={handleUpvote}
+            aria-label="upvote"
           >
             <PlusIcon />
           </button>
@@ -142,6 +143,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
           <button
             className="text-p-light-gray hover:text-p-moderate-blue"
             onClick={handleDownvote}
+            aria-label="downvote"
           >
             <MinusIcon />
           </button>
@@ -220,6 +222,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
               <button
                 className="text-p-light-gray hover:text-p-moderate-blue"
                 onClick={handleUpvote}
+                aria-label="upvote"
               >
                 <PlusIcon />
               </button>
@@ -229,6 +232,7 @@ const CommentItem = ({ comment, currentUser }: Props) => {
               <button
                 className="text-p-light-gray hover:text-p-moderate-blue"
                 onClick={handleDownvote}
+                aria-label="downvote"
               >
                 <MinusIcon />
               </button>

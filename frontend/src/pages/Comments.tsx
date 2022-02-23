@@ -99,6 +99,27 @@ const Comments = () => {
               showContainer={true}
               showAvatar={true}
             />
+            <footer>
+              Challenge by{" "}
+              <a
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                className="hover:underline text-p-moderate-blue"
+                rel="noopener noreferrer"
+              >
+                Frontend Mentor
+              </a>
+              . Coded by{" "}
+              <a
+                href="https://www.frontendmentor.io/profile/JRS-Developer"
+                target="_blank"
+                className="hover:underline text-p-moderate-blue"
+                rel="noopener noreferrer"
+              >
+                Jose Sanchez (JRS-Dev) 👨‍💻
+              </a>
+              .
+            </footer>
           </>
         ) : null}
       </>
