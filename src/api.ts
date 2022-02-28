@@ -1,1 +1,1 @@
-export const restCountrieAPi: string = "https://restcountries.eu/rest/v2";
+export const restCountrieAPi: string = "https://restcountries.com/v2";
