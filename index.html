@@ -24,49 +24,64 @@
     <title>Frontend Mentor | Interactive rating component</title>
   </head>
   <body>
-    <main>
-      <div>
-        <div>
-          <figure>
+    <main class="container">
+      <div class="rating">
+        <div class="rating-item">
+          <figure class="rating-star__container">
             <img src="./images/icon-star.svg" alt="Start Icon" />
           </figure>
-          <h3>How did we do?</h3>
-          <p>
-            Please let us know how we did with your support request. All
-            feedback is appreciated to help us improve our offering!
-          </p>
-          <div>
+          <article>
+            <h3 class="title">How did we do?</h3>
+            <p>
+              Please let us know how we did with your support request. All
+              feedback is appreciated to help us improve our offering!
+            </p>
+          </article>
+          <div class="rating-btn__container">
             <button class="rating-btn" data-rating="1">1</button>
             <button class="rating-btn" data-rating="2">2</button>
             <button class="rating-btn" data-rating="3">3</button>
             <button class="rating-btn" data-rating="4">4</button>
             <button class="rating-btn" data-rating="5">5</button>
           </div>
-          <button type="submit" id="submit-btn">Submit</button>
+          <button type="submit" id="submit-btn" class="btn">Submit</button>
         </div>
-      </div>
-      <div>
-        <figure>
-          <img
-            src="./images/illustration-thank-you.svg"
-            alt="Thank You Illustration"
-          />
-        </figure>
-        <p>You selected <span id="rating-text">1</span> out of 5</p>
-        <h3>Thank you!</h3>
-        <p>
-          We appreciate you taking the time to give a rating. If you ever need
-          more support, don’t hesitate to get in touch!
-        </p>
+        <div class="rating-item rating-thank">
+          <figure>
+            <img
+              src="./images/illustration-thank-you.svg"
+              alt="Thank You Illustration"
+            />
+          </figure>
+          <p class="rating-thank__selected">
+            You selected <span id="rating-text">1</span> out of 5
+          </p>
+          <article class="rating-thank__article">
+            <h3 class="title">Thank you!</h3>
+            <p>
+              We appreciate you taking the time to give a rating. If you ever
+              need more support, don’t hesitate to get in touch!
+            </p>
+          </article>
+        </div>
       </div>
     </main>
 
-    <div class="attribution">
+    <footer class="attribution">
       Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        rel="noopener noreferrer"
         >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+      >. Coded by
+      <a
+        href="https://github.com/JRS-Developer/"
+        target="_blank"
+        rel="noreferrer noopener"
+        >Jose Sanchez</a
+      >.
+    </footer>
 
     <script src="./scripts/index.js"></script>
   </body>
