@@ -93,6 +93,7 @@ a:hover {
   transition: all 0.2s ease-in-out;
   text-decoration: underline;
   padding: 0;
+  font-size: 0.8rem;
 }
 
 .btn-link:hover {
@@ -105,7 +106,8 @@ a:hover {
   background-color: transparent;
   color: var(--dark-blue);
   transition: all 0.2s ease-in-out;
-  opacity: 0.7;
+  opacity: 0.6;
+  font-size: 0.8rem;
 }
 
 .btn-text:hover {
@@ -137,6 +139,7 @@ a:hover {
   max-width: 450px;
   max-height: 700px;
   border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .card-article {
@@ -176,7 +179,7 @@ a:hover {
   font-size: var(--font-body);
   font-weight: var(--font-black);
   color: var(--dark-blue);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
 }
 
 .card-plan__price {
