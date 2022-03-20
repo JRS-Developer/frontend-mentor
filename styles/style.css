@@ -1,0 +1,47 @@
+:root {
+  /* Fonts */
+  --ff-sans: "Overpass", sans-serif;
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  --fs-body: 15px;
+
+  /* Colors */
+
+  /* Primary Colors */
+  --c-orange: hsl(25, 97%, 53%);
+
+  /* Neutral Colors */
+  --c-white: hsl(0, 0%, 100%);
+  --c-light-grey: hsl(217, 12%, 63%);
+  --c-medium-grey: hsl(216, 12%, 54%);
+  --c-dark-blue: hsl(213, 19%, 18%);
+  --c-v-dark-blue: hsl(216, 12%, 8%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+
+body {
+  font-family: var(--ff-sans);
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--c-dark-blue);
+  background-color: var(--c-v-dark-blue);
+}
