@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://github.com/JRS-Developer/order-summary)
-- Live Site URL: [Live site URL](https://order-summary-jrs.netlify.app/)
+- Solution URL: [Solution URL](https://github.com/JRS-Developer/interactive-rating-component)
+- Live Site URL: [Live site URL](https://interactive-rating-jrs.netlify.app/)
 
 ## My process
 
