@@ -117,23 +117,20 @@ a:hover {
 }
 
 .rating-card__picture {
-  position: relative;
+  background-color: var(--c-violet);
 }
 
-.rating-card__picture::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  background-color: var(--c-violet);
-  filter: brightness(0.8);
+.rating-card__picture-img {
+  mix-blend-mode: multiply;
+  opacity: 0.75;
 }
 
 .rating-card__picture--desktop {
   display: none;
+}
+
+.rating-card__picture--mobile {
+  width: 100%;
 }
 
 .attribution {
