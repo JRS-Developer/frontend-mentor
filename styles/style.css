@@ -40,6 +40,15 @@ html {
   overflow-x: hidden;
 }
 
+a {
+  color: var(--clp-green);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 body {
   font-family: var(--ff-manrope);
   color: var(--cls-gray-blue);
@@ -114,6 +123,12 @@ body {
 
 .advice-card__divider-img {
   width: 100%;
+}
+
+.attribution {
+  text-align: center;
+  color: var(--clp-cyan);
+  padding: 1rem;
 }
 
 /* Spin Animation */
