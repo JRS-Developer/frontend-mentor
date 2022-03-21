@@ -24,10 +24,10 @@
     <title>Frontend Mentor | Advice generator app</title>
   </head>
   <body>
-    <main>
-      <section>
-        <h2>Advice #<span id="advideId"></span></h2>
-        <p id="adviceText"></p>
+    <main class="container">
+      <section class="advice-card">
+        <h2 class="advice-card__title">Advice #<span id="adviceId"></span></h2>
+        <p id="adviceText" class="advice-card__quote"></p>
         <picture>
           <source
             srcset="./images/pattern-divider-mobile.svg"
@@ -36,14 +36,12 @@
           <source srcset="./images/pattern-divider-desktop.svg" />
           <img src="./images/pattern-divider-desktop.svg" alt="" />
         </picture>
-        <div>
-          <button>
-            <img
-              src="./images/icon-dice.svg"
-              alt="Dice icon to create new advice"
-            />
-          </button>
-        </div>
+        <button id="adviceButton" class="advice-card__btn">
+          <img
+            src="./images/icon-dice.svg"
+            alt="Dice icon to create new advice"
+          />
+        </button>
       </section>
     </main>
 
