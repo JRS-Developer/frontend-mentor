@@ -61,13 +61,13 @@
           </p>
         </div>
         <div>
-          <div role="tablist" aria-label="Feature Tabs">
+          <div role="tablist" aria-label="Feature Tabs" class="tablist">
             <button
               role="tab"
               aria-selected="true"
               aria-controls="panel-1"
               id="tab-1"
-              tabindex="0"
+              class="tablist__tab tablist__tab--active"
             >
               Simple Bookmarking
             </button>
@@ -76,7 +76,7 @@
               aria-selected="false"
               aria-controls="panel-2"
               id="tab-2"
-              tabindex="-1"
+              class="tablist__tab"
             >
               Speedy Searching
             </button>
@@ -85,7 +85,7 @@
               aria-selected="false"
               aria-controls="panel-3"
               id="tab-3"
-              tabindex="-1"
+              class="tablist__tab"
             >
               Easy Sharing
             </button>
@@ -93,8 +93,8 @@
           <div
             role="tabpanel"
             id="panel-1"
-            tabindex="0"
             aria-labelledby="tab-1"
+            class="tablist__panel tablist__panel--active"
           >
             <div>
               <img
@@ -111,50 +111,48 @@
               </p>
               <button>More Info</button>
             </div>
+          </div>
 
-            <div
-              role="tabpanel"
-              id="panel-2"
-              tabindex="0"
-              aria-labelledby="tab-2"
-            >
-              <div>
-                <img
-                  src="./images/illustration-features-tab-2.svg"
-                  alt="Speedy Searching Illustration"
-                />
-              </div>
-              <div>
-                <h3>Intelligent search</h3>
-                <p>
-                  Our powerful search feature will help you find saved sites in
-                  no time at all. No need to trawl through all of your
-                  bookmarks.
-                </p>
-                <button>More Info</button>
-              </div>
+          <div
+            role="tabpanel"
+            id="panel-2"
+            aria-labelledby="tab-2"
+            class="tablist__panel"
+          >
+            <div>
+              <img
+                src="./images/illustration-features-tab-2.svg"
+                alt="Speedy Searching Illustration"
+              />
             </div>
-            <div
-              role="tabpanel"
-              id="panel-3"
-              tabindex="0"
-              aria-labelledby="tab-3"
-            >
-              <div>
-                <img
-                  src="./images/illustration-features-tab-3.svg"
-                  alt="Easy Sharing Illustration"
-                />
-              </div>
-              <div>
-                <h3>Share your bookmarks</h3>
-                <p>
-                  Easily share your bookmarks and collections with others.
-                  Create a shareable link that you can send at the click of a
-                  button.
-                </p>
-                <button>More Info</button>
-              </div>
+            <div>
+              <h3>Intelligent search</h3>
+              <p>
+                Our powerful search feature will help you find saved sites in no
+                time at all. No need to trawl through all of your bookmarks.
+              </p>
+              <button>More Info</button>
+            </div>
+          </div>
+          <div
+            role="tabpanel"
+            id="panel-3"
+            aria-labelledby="tab-3"
+            class="tablist__panel"
+          >
+            <div>
+              <img
+                src="./images/illustration-features-tab-3.svg"
+                alt="Easy Sharing Illustration"
+              />
+            </div>
+            <div>
+              <h3>Share your bookmarks</h3>
+              <p>
+                Easily share your bookmarks and collections with others. Create
+                a shareable link that you can send at the click of a button.
+              </p>
+              <button>More Info</button>
             </div>
           </div>
         </div>
@@ -202,16 +200,14 @@
             like answered please feel free to email us.
           </p>
         </div>
-        <div>
+        <div class="accordion">
           <!-- Question 1 -->
-          <h3>
-            <button>
-              What is Bookmark?
-              <span></span>
-            </button>
-          </h3>
+          <button class="accordion__trigger">
+            What is Bookmark?
+            <span></span>
+          </button>
           <!-- Answer 1 -->
-          <div>
+          <div class="accordion__panel">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
               tincidunt justo eget ultricies fringilla. Phasellus blandit ipsum
@@ -219,14 +215,12 @@
             </p>
           </div>
           <!-- Question 2 -->
-          <h3>
-            <button>
-              How can I request a new browser?
-              <span></span>
-            </button>
-          </h3>
+          <button class="accordion__trigger">
+            How can I request a new browser?
+            <span></span>
+          </button>
           <!-- Answer 2 -->
-          <div>
+          <div class="accordion__panel">
             <p>
               Vivamus luctus eros aliquet convallis ultricies. Mauris augue
               massa, ultricies non ligula. Suspendisse imperdiet. Vivamus luctus
@@ -237,14 +231,12 @@
             </p>
           </div>
           <!-- Question 3 -->
-          <h3>
-            <button>
-              Is there a mobile app?
-              <span></span>
-            </button>
-          </h3>
+          <button class="accordion__trigger">
+            Is there a mobile app?
+            <span></span>
+          </button>
           <!-- Answer 3 -->
-          <div>
+          <div class="accordion__panel">
             <p>
               Sed consectetur quam id neque fermentum accumsan. Praesent luctus
               vestibulum dolor, ut condimentum urna vulputate eget. Cras in
@@ -253,14 +245,12 @@
             </p>
           </div>
           <!-- Question 4 -->
-          <h3>
-            <button>
-              What about other Chromium browsers?
-              <span></span>
-            </button>
-          </h3>
+          <button class="accordion__trigger">
+            What about other Chromium browsers?
+            <span></span>
+          </button>
           <!-- Answer 4 -->
-          <div>
+          <div class="accordion__panel">
             <p>
               Integer condimentum ipsum id imperdiet finibus. Vivamus in
               placerat mi, at euismod dui. Aliquam vitae neque eget nisl gravida
@@ -309,5 +299,8 @@
         >. Coded by <a href="#">Your Name Here</a>.
       </p>
     </div>
+
+    <script src="./scripts/accordion.js"></script>
+    <script src="./scripts/tabs.js"></script>
   </body>
 </html>
