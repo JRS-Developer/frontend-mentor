@@ -13,6 +13,11 @@
     const ariaControls = tab.getAttribute("aria-controls");
     const panel = document.querySelector(`#${ariaControls}`);
 
+    if (!panel)
+      throw new Error(
+        "panel not found, maybe you forgot to add the aria-controls attribute to the tab button"
+      );
+
     return panel;
   };
 
