@@ -1,0 +1,47 @@
+@use "../abstracts/variables";
+
+$border: 2px solid;
+
+.btn {
+  border: $border transparent;
+  border-radius: 4px;
+  font-weight: variables.$font-weight-medium;
+  padding: 1rem 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-primary {
+  background-color: variables.$primary-color;
+  color: variables.$white;
+
+  &:hover {
+    background-color: transparent;
+    border: $border variables.$primary-color;
+    color: variables.$primary-color;
+  }
+}
+
+.btn-secondary {
+  background-color: variables.$secondary-color;
+  color: variables.$white;
+
+  &:hover {
+    background-color: transparent;
+    border: $border variables.$secondary-color;
+    color: variables.$secondary-color;
+  }
+}
+
+.btn-white {
+  background-color: variables.$white;
+  color: variables.$text-color;
+
+  &:hover {
+    background-color: transparent;
+    border: $border variables.$text-color;
+    color: variables.$text-color;
+  }
+}
