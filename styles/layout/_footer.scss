@@ -1,0 +1,34 @@
+@use "../abstracts/variables";
+
+.footer {
+  align-items: center;
+  background-color: variables.$dark-blue;
+  color: variables.$white;
+  padding: 2rem variables.$padding-large;
+}
+
+.footer-brand {
+  display: flex;
+}
+
+.footer-logo {
+  fill: variables.$white;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+}
+
+.footer-link {
+  color: variables.$white;
+  font-size: variables.$font-size-small;
+}
+
+.footer-social {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}

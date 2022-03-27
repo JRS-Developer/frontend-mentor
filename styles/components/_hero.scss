@@ -1,0 +1,47 @@
+@use "../abstracts/variables";
+
+.hero {
+  align-items: center;
+  display: flex;
+  gap: 4rem;
+  min-height: calc(100vh - variables.$height-header);
+  padding: 1rem variables.$padding-large;
+  padding-right: 0;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.hero-info-title {
+  color: variables.$title-color;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.hero-img {
+  padding-right: 2rem;
+}
+
+.middle-circle-right {
+  position: relative;
+
+  &::after {
+    background-color: variables.$primary-color;
+    border-radius: 999px;
+    bottom: 0;
+    content: "";
+    height: 350px;
+    left: 25%;
+    position: absolute;
+    width: 500%;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
