@@ -4,7 +4,7 @@
   "description": "![Design preview for the Bookmark landing page coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "dev:css": "sass --watch styles/main.scss:styles/main.css"
+    "dev:css": "sass --watch styles/main.scss:build/styles/main.css"
   },
   "keywords": [],
   "author": "",
