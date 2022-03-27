@@ -21,31 +21,49 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="build/styles/main.css" />
 
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/c33f24e845.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Frontend Mentor | Bookmark landing page</title>
   </head>
   <body>
     <!-- Navbar -->
     <header>
-      <nav>
-        <div>
+      <nav class="navbar">
+        <a href="#">
           <img src="./images/logo-bookmark.svg" alt="Bookmark Logo" />
-        </div>
-        <ul>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Contact</a></li>
+        </a>
+        <ul class="ml-auto nav">
+          <li class="tracking-wide uppercase">
+            <a href="#" class="nav-link">Features</a>
+          </li>
+          <li class="tracking-wide uppercase">
+            <a href="#" class="nav-link">Pricing</a>
+          </li>
+          <li class="tracking-wide uppercase">
+            <a href="#" class="nav-link">Contact</a>
+          </li>
+          <li>
+            <a
+              class="tracking-wide uppercase btn btn-secondary nav-btn"
+              href="#"
+            >
+              Login
+            </a>
+          </li>
         </ul>
-        <button class="tracking-wide uppercase btn btn-secondary">Login</button>
       </nav>
     </header>
 
     <main>
       <!-- Hero -->
-      <section>
-        <div>
-          <h1>A Simple Bookmark Manager</h1>
+      <section class="hero">
+        <div class="hero-info">
+          <h1 class="hero-info-title">A Simple Bookmark Manager</h1>
           <p>
             A clean and simple interface to organize your favourite websites.
             Open a new browser tab and see your sites load instantly. Try it for
