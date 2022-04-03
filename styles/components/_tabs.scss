@@ -1,0 +1,73 @@
+@use "../abstracts/variables";
+
+$border: 4px solid;
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tablist-tab {
+  background-color: transparent;
+  border: 0;
+  border-bottom: $border transparent;
+  box-shadow: 0 1px 0 scale-color($color: variables.$gray-blue, $alpha: -50%);
+  color: variables.$title-color;
+  cursor: pointer;
+  opacity: 0.7;
+  padding: 2rem 3rem;
+
+  &:hover {
+    color: variables.$secondary-color;
+  }
+}
+
+.tablist-tab.active {
+  border-bottom: $border variables.$secondary-color;
+  color: variables.$title-color;
+  opacity: 1;
+}
+
+.tablist-panel {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.tablist-panel.active {
+  height: auto;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  visibility: visible;
+}
+
+// Features Tabs Panels
+
+.feature-panel {
+  align-items: center;
+}
+
+.feature-panel.active {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  padding: 5rem 8rem;
+}
+
+.feature-panel-info {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.feature-panel-title {
+  color: variables.$title-color;
+  font-size: 2rem;
+  font-weight: variables.$font-weight-medium;
+}
