@@ -32,3 +32,15 @@
   gap: 2rem;
   list-style: none;
 }
+
+.footer-social > svg {
+  transition: color variables.$transition-duration;
+}
+
+.footer-social > svg:hover {
+  color: variables.$secondary-color;
+}
+
+.footer-social-link {
+  color: variables.$white;
+}
