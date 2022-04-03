@@ -9,7 +9,10 @@
 // layout
 @use "layout/navigation";
 @use "layout/footer";
+@use "layout/section";
 
 // Components
 @use "components/button";
 @use "components/hero";
+@use "components/tabs";
+@use "components/middle-circle";
