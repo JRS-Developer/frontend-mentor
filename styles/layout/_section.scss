@@ -1,0 +1,20 @@
+@use "../abstracts/variables";
+
+.section-header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.section-title {
+  color: variables.$title-color;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.section-description {
+  max-width: 530px;
+}
