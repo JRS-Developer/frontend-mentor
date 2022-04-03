@@ -2,11 +2,11 @@
   const tabLists = document.querySelectorAll('[role="tablist"]');
 
   const panelsClassNames = {
-    active: "tablist__panel--active",
+    active: "active",
   };
 
   const tabsClassNames = {
-    active: "tablist__tab--active",
+    active: "active",
   };
 
   const getTabPanels = (tab) => {
