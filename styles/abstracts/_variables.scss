@@ -12,8 +12,6 @@ $title-color: $dark-blue;
 $primary-color: $blue;
 $secondary-color: $red;
 
-$box-shadow-color: hsla(229, 8%, 60%, 0.3);
-
 // Fonts
 
 $font-weight-normal: 400;
@@ -27,6 +25,8 @@ $font-size-normal: 0.9rem;
 $transition-duration: 0.2s;
 
 // Box Shadow
+$box-shadow-color: hsla(229, 8%, 60%, 0.3);
+
 $box-shadow-sm: 0 2px 4px 0 $box-shadow-color;
 $box-shadow-md: 0 6px 8px 0 $box-shadow-color;
 $box-shadow-lg: 0 12px 16px 0 $box-shadow-color;
