@@ -2,13 +2,13 @@
   const accordions = document.querySelectorAll(".accordion");
 
   const triggersClassNames = {
-    normal: "accordion__trigger",
-    active: "accordion__trigger--active",
+    normal: "accordion-trigger",
+    active: "active",
   };
 
   const panelsClassNames = {
-    normal: "accordion__panel",
-    active: "accordion__panel--active",
+    normal: "accordion-panel",
+    active: "active",
   };
 
   const hideElement = (element, classToRemove) =>
@@ -19,22 +19,40 @@
       hideElement(trigger, triggersClassNames.active)
     );
 
-  const hidePanels = (panels) =>
-    panels.forEach((panel) => hideElement(panel, panelsClassNames.active));
+  const hidePanels = (panels) => {
+    panels.forEach((panel) => {
+      hideElement(panel, panelsClassNames.active);
+      panel.style.maxHeight = 0;
+    });
+  };
 
   const showTrigger = (trigger) =>
     trigger.classList.add(triggersClassNames.active);
 
-  const showPanel = (panel) => panel.classList.add(panelsClassNames.active);
+  const showPanel = (panel) => {
+    panel.classList.add(panelsClassNames.active);
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  };
 
   const handleAccordionClick = (triggers, panels) => (e) => {
     if (e.target && e.target.classList.contains(triggersClassNames.normal)) {
+      const trigger = e.target;
+      const panel = trigger.nextElementSibling;
+
+      // If the panel is already active, hide it
+      if (trigger.classList.contains(triggersClassNames.active)) {
+        hideTriggers(triggers);
+        hidePanels(panels);
+        return;
+      }
+
+      // Else hide all other panels
       hideTriggers(triggers);
       hidePanels(panels);
-      showTrigger(e.target);
 
-      const targetPanel = e.target.nextElementSibling;
-      showPanel(targetPanel);
+      // Show the clicked panel
+      showTrigger(trigger);
+      showPanel(panel);
     }
   };
 
