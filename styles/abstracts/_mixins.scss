@@ -1,0 +1,17 @@
+@use "./variables";
+
+$breakpoints: variables.$breakpoints;
+
+// Media queries mixin
+@mixin from($bp) {
+  //Mixin de media queries
+  @if map-has-key($breakpoints, $bp) {
+    @media screen and (min-width: map-get($breakpoints,$bp)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $bp) {
+      @content;
+    }
+  }
+}
