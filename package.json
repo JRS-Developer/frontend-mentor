@@ -4,12 +4,15 @@
   "description": "![Design preview for the Bookmark landing page coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "dev:css": "sass --watch styles/main.scss:build/styles/main.css"
+    "dev": "parcel ./index.html --port 3000 --open",
+    "build": "parcel ./index.html --dist-dir ./dist"
   },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "parcel": "^2.4.1",
     "postcss": "^8.4.12",
     "sass": "^1.49.9",
     "stylelint": "^14.6.1",
