@@ -316,13 +316,31 @@
       </section>
 
       <!-- Promotion Form -->
-      <section>
-        <p>35,000+ already joined</p>
-        <h3>Stay up-to-date with what we’re doing</h3>
-
-        <form>
-          <input type="email" placeholder="Email Address" />
-          <button>Contact Us</button>
+      <section class="mt-28">
+        <form class="bg-primary contact-form" id="contact-form" novalidate>
+          <p class="contact-form-desc">35,000+ already joined</p>
+          <h3 class="text-white text-medium contact-form-title">
+            Stay up-to-date with what we’re doing
+          </h3>
+          <div class="contact-form-cta">
+            <div class="input-container">
+              <input
+                id="contact-form-email"
+                class="input"
+                type="email"
+                placeholder="Enter your email address"
+                required
+              />
+              <span class="invalid-feedback" aria-labeleby="contact-form-email">
+                Whoops, make sure, it's an email</span
+              >
+              <i
+                class="fa-solid fa-circle-exclamation fa-xl input-icon invalid"
+              ></i>
+              <i class="fa-solid fa-check fa-xl input-icon valid"></i>
+            </div>
+            <button class="btn btn-secondary">Contact Us</button>
+          </div>
         </form>
       </section>
     </main>
@@ -362,6 +380,7 @@
       </p>
     </div>
 
+    <script src="./scripts/index.js"></script>
     <script src="./scripts/accordion.js"></script>
     <script src="./scripts/tabs.js"></script>
   </body>
