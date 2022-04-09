@@ -5,6 +5,10 @@ html {
   overflow-x: hidden;
 }
 
+body {
+  background-color: variables.$body-bg;
+}
+
 *,
 *::before,
 *::after {
