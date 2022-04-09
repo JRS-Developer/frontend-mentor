@@ -40,3 +40,13 @@ $padding-large: 6rem;
 
 // Heights
 $height-header: 8rem;
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
