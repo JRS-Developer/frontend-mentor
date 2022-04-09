@@ -1,3 +1,4 @@
+@use "../abstracts/variables";
 // Flex
 .flex {
   display: flex;
@@ -9,6 +10,25 @@
 
 .items-center {
   align-items: center;
+}
+
+// Gaps
+.gap-4 {
+  gap: 1rem;
+}
+
+// Background
+.bg-primary {
+  background-color: variables.$primary-color;
+}
+
+// Text
+.text-white {
+  color: variables.$white !important;
+}
+
+.text-medium {
+  font-weight: variables.$font-weight-medium;
 }
 
 // Text Transforms
