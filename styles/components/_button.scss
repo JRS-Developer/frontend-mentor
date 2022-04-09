@@ -32,7 +32,7 @@ $border: 2px solid;
   color: variables.$white;
 
   &:hover {
-    background-color: transparent;
+    background-color: variables.$body-bg;
     border: $border variables.$secondary-color;
     color: variables.$secondary-color;
   }
