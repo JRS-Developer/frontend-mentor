@@ -10,9 +10,11 @@
 @use "layout/navigation";
 @use "layout/footer";
 @use "layout/section";
+@use "layout/form";
 
 // Components
 @use "components/button";
+@use "components/input";
 @use "components/hero";
 @use "components/tabs";
 @use "components/accordion";
