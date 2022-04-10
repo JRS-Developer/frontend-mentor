@@ -1,27 +1,149 @@
 @use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+
+$light-gray: scale-color(
+  $color: variables.$gray-blue,
+  $alpha: -70%,
+);
+
+$transparent-blue: scale-color(
+  $color: variables.$dark-blue,
+  $alpha: -5%,
+);
+
+.header {
+  height: variables.$height-header;
+}
 
 .navbar {
   align-items: center;
+  background-color: $transparent-blue;
   display: flex;
-  height: variables.$height-header;
-  padding: 0 variables.$padding-large;
-  padding-bottom: 0;
+  flex-direction: column;
+  height: 100%;
+  padding: 4rem 3rem;
+  position: fixed;
+  width: 100%;
+
+  @include from(md) {
+    padding: 0 variables.$padding-large;
+  }
+}
+
+.navbar-brand {
+  display: flex;
+  width: 100%;
+}
+
+.navbar-logo-mobile {
+  display: block;
+
+  @include from(md) {
+    display: none;
+  }
+}
+
+.navbar-logo-desktop {
+  display: none;
+
+  @include from(md) {
+    display: block;
+  }
+}
+
+.navbar-hamburger {
+  background-color: transparent;
+  border: 0;
+  margin-left: auto;
+
+  @include from(md) {
+    display: none;
+  }
+}
+
+.navbar-hamburger .bar {
+  background-color: variables.$white;
+  border-radius: 1rem;
+  display: block;
+  height: 2px;
+  margin: 5px auto;
+  transition: all variables.$transition-duration ease;
+  width: 25px;
+}
+
+.navbar-hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .nav {
   align-items: center;
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
+  height: 100%;
   list-style: none;
   margin: 0;
-  margin-left: auto;
+  margin-top: 4rem;
+  padding: 0;
+  width: 100%;
+
+  @include from(md) {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+.nav-item {
+  display: flex;
+  width: 100%;
 }
 
 .nav-link {
-  font-size: variables.$font-size-small;
+  border: 1px solid $light-gray;
+  border-left: 0;
+  border-right: 0;
+  color: variables.$white;
+  font-size: variables.$font-size-large;
+  letter-spacing: 2px;
+  padding: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .nav-btn {
-  font-size: variables.$font-size-small !important;
+  background-color: transparent !important;
+  border-color: variables.$white !important;
+  color: variables.$white !important;
+  font-size: variables.$font-size-body !important;
+  margin-top: 2rem;
   padding: 0.75rem 2rem !important;
+  width: 100%;
+}
+
+.nav-social {
+  align-items: center;
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+}
+
+.nav-social-link {
+  color: variables.$white;
+  font-size: variables.$font-size-body;
+  text-decoration: none;
+  transition: all variables.$transition-duration ease;
+
+  &:hover {
+    color: $light-gray;
+  }
 }

@@ -1,7 +1,7 @@
 @use "../abstracts/variables";
 
 %middle-circle {
-  display: inline-block;
+  display: none;
   position: relative;
 
   &::after {

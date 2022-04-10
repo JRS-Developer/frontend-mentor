@@ -2,6 +2,7 @@
 
 .extensions-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   list-style: none;

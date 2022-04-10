@@ -36,6 +36,10 @@ a:hover {
   color: variables.$secondary-color;
 }
 
+img {
+  max-width: 100%;
+}
+
 // Use a minimum value of 1.5 for line-height for main paragraph content.
 // This will help people experiencing low vision conditions,
 // https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#accessibility_concerns

@@ -32,27 +32,51 @@
   </head>
   <body>
     <!-- Navbar -->
-    <header>
+    <header class="header">
       <nav class="navbar">
-        <a href="#">
-          <img src="./images/logo-bookmark.svg" alt="Bookmark Logo" />
-        </a>
-        <ul class="ml-auto nav">
-          <li class="tracking-wide uppercase">
+        <div class="navbar-brand">
+          <a href="#">
+            <img
+              src="./images/logo-bookmark.svg"
+              alt="Bookmark Logo"
+              class="navbar-logo-desktop"
+            />
+            <img
+              src="./images/logo-bookmark-white.svg"
+              alt="Bookmark Logo"
+              class="navbar-logo-mobile"
+            />
+          </a>
+          <button class="navbar-hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+        <ul class="nav">
+          <li class="nav-item">
             <a href="#" class="nav-link">Features</a>
           </li>
-          <li class="tracking-wide uppercase">
+          <li class="nav-item">
             <a href="#" class="nav-link">Pricing</a>
           </li>
-          <li class="tracking-wide uppercase">
+          <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>
           </li>
-          <li>
+          <li class="nav-item">
             <a
               class="tracking-wide uppercase btn btn-secondary nav-btn"
               href="#"
             >
               Login
+            </a>
+          </li>
+          <li class="nav-social">
+            <a href="#" class="nav-social-link">
+              <i class="fa-brands fa-facebook-square fa-2xl"></i>
+            </a>
+            <a href="#" class="nav-social-link">
+              <i class="fa-brands fa-twitter fa-2xl"></i>
             </a>
           </li>
         </ul>
@@ -74,13 +98,13 @@
             <button class="btn btn-white">Get it on Firefox</button>
           </div>
         </div>
-        <div class="middle-circle-right">
+        <div class="hero-img-container middle-circle-right">
           <img src="./images/illustration-hero.svg" alt="" class="hero-img" />
         </div>
       </section>
 
       <!-- Features Section -->
-      <section class="mt-12">
+      <section class="mt-12 section">
         <div class="section-header">
           <h2 class="section-title">Features</h2>
           <p class="section-description">
@@ -361,7 +385,7 @@
           <a href="#" class="tracking-wide uppercase footer-link">Contact</a>
         </li>
       </ul>
-      <div class="ml-auto footer-social">
+      <div class="footer-social">
         <a href="#" class="footer-social-link">
           <i class="fa-brands fa-facebook-square fa-xl"></i>
         </a>

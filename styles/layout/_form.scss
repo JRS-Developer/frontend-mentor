@@ -1,4 +1,6 @@
 @use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+
 // Home Contact Form
 .contact-form {
   align-items: center;
@@ -24,10 +26,17 @@
 
 .contact-form-cta {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   max-width: 440px;
   width: 100%;
+
+  @include from(md) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
 }
 
 .contact-form .input-container {

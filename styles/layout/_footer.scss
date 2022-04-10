@@ -1,10 +1,18 @@
 @use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
 
 .footer {
   align-items: center;
   background-color: variables.$dark-blue;
   color: variables.$white;
+  flex-direction: column;
+  gap: 2rem;
+  height: auto;
   padding: 2rem variables.$padding-large;
+
+  @include from(md) {
+    flex-direction: row;
+  }
 }
 
 .footer-brand {
@@ -17,20 +25,31 @@
 
 .footer-links {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
   list-style: none;
   margin: 0;
+  padding: 0;
+  text-align: center;
+
+  @include from(md) {
+    flex-direction: row;
+  }
 }
 
 .footer-link {
   color: variables.$white;
-  font-size: variables.$font-size-small;
+  font-size: variables.$font-size-normal;
 }
 
 .footer-social {
   display: flex;
   gap: 2rem;
   list-style: none;
+
+  @include from(md) {
+    margin-left: auto;
+  }
 }
 
 .footer-social > svg {

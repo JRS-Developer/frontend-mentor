@@ -1,5 +1,9 @@
 @use "../abstracts/variables";
 
+.section {
+  padding: 0 2rem;
+}
+
 .section-header {
   align-items: center;
   display: flex;

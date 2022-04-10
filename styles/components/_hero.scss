@@ -1,12 +1,19 @@
 @use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
 
 .hero {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   gap: 4rem;
   min-height: calc(100vh - variables.$height-header);
-  padding: 1rem variables.$padding-large;
-  padding-right: 0;
+  padding: 2rem;
+
+  @include from(md) {
+    flex-wrap: nowrap;
+    padding: 1rem variables.$padding-large;
+    padding-right: 0;
+  }
 }
 
 .hero-info {
@@ -14,6 +21,12 @@
   flex-direction: column;
   gap: 1.5rem;
   justify-content: center;
+  text-align: center;
+
+  @include from(md) {
+    gap: 1rem;
+    text-align: left;
+  }
 }
 
 .hero-info-title {
@@ -26,8 +39,23 @@
   align-items: center;
   display: flex;
   gap: 1.5rem;
+  justify-content: center;
+
+  @include from(sm) {
+    justify-content: flex-start;
+  }
 }
 
 .hero-img {
-  padding-right: 2rem;
+  @include from(md) {
+    padding-right: 2rem;
+  }
+}
+
+.hero-img-container {
+  order: -1;
+  @include from(md) {
+    order: 0;
+    width: 100%;
+  }
 }
