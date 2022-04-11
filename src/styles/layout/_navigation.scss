@@ -21,28 +21,35 @@ $transparent-blue: scale-color(
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: 0 3rem;
+  padding: 3rem;
   width: 100%;
 
   @include from(md) {
+    flex-direction: row;
     padding: 0 variables.$padding-large;
   }
 }
 
 .navbar.active {
-  background-color: $transparent-blue;
-  padding-top: 3rem;
-  position: fixed;
-  transition: background-color variables.$transition-duration;
+  @include upto(md) {
+    background-color: $transparent-blue;
+    position: fixed;
+    transition: background-color variables.$transition-duration;
+    z-index: 1;
+  }
 }
 
 // When the navbar is active, it will show the white logo version and the nav items
 .navbar.active .navbar-logo-mobile {
-  display: block;
+  @include upto(md) {
+    display: block;
+  }
 }
 
 .navbar.active .navbar-logo-desktop {
-  display: none;
+  @include upto(md) {
+    display: none;
+  }
 }
 
 .navbar.active .nav {
@@ -50,6 +57,7 @@ $transparent-blue: scale-color(
 }
 
 .navbar-brand {
+  align-items: center;
   display: flex;
   width: 100%;
 }
@@ -105,22 +113,30 @@ $transparent-blue: scale-color(
   align-items: center;
   display: none;
   flex-direction: column;
+  gap: 0 3rem;
   height: 100%;
   list-style: none;
   margin: 0;
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding: 0;
   width: 100%;
 
   @include from(md) {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     margin-left: auto;
+    margin-top: 0;
   }
 }
 
 .nav-item {
   display: flex;
   width: 100%;
+
+  @include from(md) {
+    width: auto;
+  }
 }
 
 .nav-link {
@@ -134,16 +150,26 @@ $transparent-blue: scale-color(
   text-align: center;
   text-transform: uppercase;
   width: 100%;
+
+  @include from(md) {
+    border: 0;
+    color: variables.$title-color;
+    font-size: variables.$font-size-small;
+    padding: 0;
+    width: auto;
+  }
 }
 
 .nav-btn {
-  background-color: transparent !important;
-  border-color: variables.$white !important;
-  color: variables.$white !important;
-  font-size: variables.$font-size-body !important;
-  margin-top: 2rem;
-  padding: 0.75rem 2rem !important;
-  width: 100%;
+  @include upto(md) {
+    background-color: transparent !important;
+    border-color: variables.$white !important;
+    color: variables.$white;
+    font-size: variables.$font-size-large !important;
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    width: 100%;
+  }
 }
 
 .nav-social {
@@ -153,6 +179,10 @@ $transparent-blue: scale-color(
   justify-content: center;
   margin-top: auto;
   width: 100%;
+
+  @include from(md) {
+    display: none;
+  }
 }
 
 .nav-social-link {
