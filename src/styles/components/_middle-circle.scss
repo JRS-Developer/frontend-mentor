@@ -15,7 +15,7 @@
 
   > * {
     position: relative;
-    z-index: 1;
+    z-index: variables.$z-index-default;
   }
 }
 
@@ -23,6 +23,8 @@
   @extend %middle-circle;
 
   &::after {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     left: 20%;
   }
 }
@@ -31,6 +33,8 @@
   @extend %middle-circle;
 
   &::after {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     right: 20%;
   }
 }

@@ -31,23 +31,23 @@ $transparent-blue: scale-color(
 }
 
 .navbar.active {
-  @include upto(md) {
+  @include upto(sm) {
     background-color: $transparent-blue;
     position: fixed;
     transition: background-color variables.$transition-duration;
-    z-index: 1;
+    z-index: variables.$z-index-navbar;
   }
 }
 
 // When the navbar is active, it will show the white logo version and the nav items
 .navbar.active .navbar-logo-mobile {
-  @include upto(md) {
+  @include upto(sm) {
     display: block;
   }
 }
 
 .navbar.active .navbar-logo-desktop {
-  @include upto(md) {
+  @include upto(sm) {
     display: none;
   }
 }
