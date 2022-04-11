@@ -15,3 +15,16 @@ $breakpoints: variables.$breakpoints;
     }
   }
 }
+
+@mixin upto($bp) {
+  //Mixin de media queries
+  @if map-has-key($breakpoints, $bp) {
+    @media screen and (max-width: map-get($breakpoints,$bp)) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $bp) {
+      @content;
+    }
+  }
+}
