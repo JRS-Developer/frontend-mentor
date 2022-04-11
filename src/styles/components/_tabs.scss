@@ -12,7 +12,7 @@ $gray: scale-color(
   flex-wrap: wrap;
   justify-content: center;
 
-  @include from(md) {
+  @include upto(md) {
     border-top: 1px solid $gray;
   }
 }
@@ -46,7 +46,6 @@ $gray: scale-color(
 .tablist-panel {
   height: 0;
   opacity: 0;
-  overflow: hidden;
   visibility: hidden;
 }
 
@@ -64,11 +63,24 @@ $gray: scale-color(
 }
 
 .feature-panel.active {
-  display: grid;
-  gap: 5rem;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   justify-content: center;
-  padding: 5rem 8rem;
+  padding: 5rem 0;
+  padding-bottom: 0;
+
+  @include from(md) {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 1fr 1fr;
+    padding: 5rem;
+  }
+
+  @include from(lg) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
 }
 
 .feature-panel-info {
@@ -78,10 +90,22 @@ $gray: scale-color(
   gap: 2rem;
   height: 100%;
   justify-content: center;
+  text-align: center;
+
+  @include from(md) {
+    padding: 0;
+    text-align: left;
+  }
 }
 
 .feature-panel-title {
   color: variables.$title-color;
   font-size: 2rem;
   font-weight: variables.$font-weight-medium;
+}
+
+.feature-panel-btn {
+  @include upto(md) {
+    display: none;
+  }
 }
