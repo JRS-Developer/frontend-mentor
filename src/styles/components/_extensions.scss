@@ -1,12 +1,18 @@
 @use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
 
 .extensions-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 2rem;
-  justify-content: center;
+  justify-items: center;
   list-style: none;
   padding: 0;
+
+  @include from(lg) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .extensions-item {
@@ -22,16 +28,24 @@
   text-align: center;
   transition: box-shadow variables.$transition-duration ease-in-out;
 
+  @include from(md) {
+    &:nth-of-type(3) {
+      grid-column: span 2;
+    }
+  }
+
+  @include from(lg) {
+    &:nth-of-type(2) {
+      margin-top: 2rem;
+    }
+
+    &:nth-of-type(3) {
+      margin-top: 4rem;
+    }
+  }
+
   &:hover {
     box-shadow: variables.$box-shadow-lg;
-  }
-
-  &:nth-of-type(2) {
-    margin-top: 2rem;
-  }
-
-  &:nth-of-type(3) {
-    margin-top: 4rem;
   }
 }
 

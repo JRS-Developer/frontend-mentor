@@ -9,11 +9,15 @@ $gray: scale-color(
 
 .tablist {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
 
-  @include upto(md) {
+  @include upto(sm) {
     border-top: 1px solid $gray;
+  }
+
+  @include from(md) {
+    flex-direction: row;
   }
 }
 
