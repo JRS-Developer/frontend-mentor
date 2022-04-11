@@ -2,10 +2,9 @@
   "name": "bookmark-landing-page-master",
   "version": "1.0.0",
   "description": "![Design preview for the Bookmark landing page coding challenge](./design/desktop-preview.jpg)",
-  "main": "index.js",
   "scripts": {
-    "dev": "parcel ./index.html --port 3000 --open",
-    "build": "parcel ./index.html --dist-dir ./dist"
+    "dev": "parcel ./src/index.html --port 3000 --open",
+    "build": "parcel build ./src/index.html --out-dir ./dist"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "keywords": [],
