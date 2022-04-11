@@ -6,7 +6,7 @@
   background-color: variables.$dark-blue;
   color: variables.$white;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
   height: auto;
   padding: 2rem variables.$padding-large;
 
@@ -39,7 +39,7 @@
 
 .footer-link {
   color: variables.$white;
-  font-size: variables.$font-size-normal;
+  font-size: variables.$font-size-small;
 }
 
 .footer-social {

@@ -13,6 +13,7 @@ $border-color: scale-color(
 }
 
 .accordion-trigger {
+  align-items: center;
   background-color: transparent;
   border: 0;
   border-top: 1px solid $border-color;
@@ -20,6 +21,7 @@ $border-color: scale-color(
   justify-content: space-between;
   padding: 1.5rem;
   padding-left: 0;
+  text-align: left;
   transition: color variables.$transition-duration ease-in-out;
 
   &:nth-of-type(1) {
@@ -27,7 +29,8 @@ $border-color: scale-color(
     border-top: 0;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: variables.$secondary-color;
     cursor: pointer;
   }
