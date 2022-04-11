@@ -17,17 +17,36 @@ $transparent-blue: scale-color(
 
 .navbar {
   align-items: center;
-  background-color: $transparent-blue;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 4rem 3rem;
-  position: fixed;
+  justify-content: center;
+  padding: 0 3rem;
   width: 100%;
 
   @include from(md) {
     padding: 0 variables.$padding-large;
   }
+}
+
+.navbar.active {
+  background-color: $transparent-blue;
+  padding-top: 3rem;
+  position: fixed;
+  transition: background-color variables.$transition-duration;
+}
+
+// When the navbar is active, it will show the white logo version and the nav items
+.navbar.active .navbar-logo-mobile {
+  display: block;
+}
+
+.navbar.active .navbar-logo-desktop {
+  display: none;
+}
+
+.navbar.active .nav {
+  display: flex;
 }
 
 .navbar-brand {
@@ -36,19 +55,11 @@ $transparent-blue: scale-color(
 }
 
 .navbar-logo-mobile {
-  display: block;
-
-  @include from(md) {
-    display: none;
-  }
+  display: none;
 }
 
 .navbar-logo-desktop {
-  display: none;
-
-  @include from(md) {
-    display: block;
-  }
+  display: block;
 }
 
 .navbar-hamburger {
@@ -59,20 +70,27 @@ $transparent-blue: scale-color(
   @include from(md) {
     display: none;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .navbar-hamburger .bar {
-  background-color: variables.$white;
-  border-radius: 1rem;
+  background-color: variables.$dark-blue;
   display: block;
-  height: 2px;
+  height: 4px;
   margin: 5px auto;
-  transition: all variables.$transition-duration ease;
+  transition: transform variables.$transition-duration ease;
   width: 25px;
 }
 
+.navbar-hamburger.active .bar {
+  background-color: variables.$white;
+}
+
 .navbar-hamburger.active .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(7px, 7px);
 }
 
 .navbar-hamburger.active .bar:nth-child(2) {
@@ -80,12 +98,12 @@ $transparent-blue: scale-color(
 }
 
 .navbar-hamburger.active .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .nav {
   align-items: center;
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 100%;
   list-style: none;

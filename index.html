@@ -33,7 +33,7 @@
   <body>
     <!-- Navbar -->
     <header class="header">
-      <nav class="navbar">
+      <nav class="navbar" id="navbar">
         <div class="navbar-brand">
           <a href="#">
             <img
@@ -47,13 +47,18 @@
               class="navbar-logo-mobile"
             />
           </a>
-          <button class="navbar-hamburger">
+          <button
+            class="navbar-hamburger"
+            id="navbar-hamburger"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
           </button>
         </div>
-        <ul class="nav">
+        <ul class="nav" id="nav-menu">
           <li class="nav-item">
             <a href="#" class="nav-link">Features</a>
           </li>
