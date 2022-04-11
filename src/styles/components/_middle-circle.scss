@@ -1,16 +1,15 @@
 @use "../abstracts/variables";
 
 %middle-circle {
-  display: none;
   position: relative;
 
   &::after {
     background-color: variables.$primary-color;
     border-radius: 999px;
     content: "";
-    height: 350px;
+    height: 80%;
     position: absolute;
-    top: 20%;
+    top: 25%;
     width: 100vw;
   }
 
@@ -30,7 +29,6 @@
 
 .middle-circle-left {
   @extend %middle-circle;
-  margin-right: auto;
 
   &::after {
     right: 20%;
