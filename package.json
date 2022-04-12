@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "![Design preview for the Bookmark landing page coding challenge](./design/desktop-preview.jpg)",
   "scripts": {
-    "dev": "parcel ./src/index.html --port 3000 --open",
-    "build": "parcel build ./src/index.html --out-dir ./dist"
+    "dev": "parcel ./src/index.html --port 3000 --open --no-cache",
+    "build": "parcel build ./src/index.html --dist-dir ./dist"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "keywords": [],
