@@ -29,10 +29,11 @@ $gray: scale-color(
   color: variables.$title-color;
   cursor: pointer;
   opacity: 0.7;
-  padding: 2rem 3rem;
+  padding: 1rem;
   width: 100%;
 
   @include from(md) {
+    padding: 2rem 3rem;
     width: auto;
   }
 
