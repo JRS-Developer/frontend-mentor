@@ -12,6 +12,20 @@
   align-items: center;
 }
 
+// Screen Readers
+.sr-only {
+  // hide an element visually without hiding it from screen readers
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 // Gaps
 .gap-4 {
   gap: 1rem;
