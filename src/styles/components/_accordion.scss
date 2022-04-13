@@ -7,7 +7,6 @@ $border-color: scale-color(
 
 .accordion {
   border-bottom: 1px solid $border-color;
-  border-top: 1px solid $border-color;
   display: flex;
   flex-direction: column;
 }
@@ -24,11 +23,6 @@ $border-color: scale-color(
   text-align: left;
   transition: color variables.$transition-duration ease-in-out;
   width: 100%;
-
-  &:nth-of-type(1) {
-    // Hide the border on the first accordion trigger
-    border-top: 0;
-  }
 
   &:hover,
   &:focus {
