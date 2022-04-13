@@ -43,6 +43,7 @@ $border-color: scale-color(
 
 .accordion-icon {
   color: variables.$primary-color;
+  pointer-events: none;
   transition: transform variables.$transition-duration ease-in-out;
 }
 
