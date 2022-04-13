@@ -15,14 +15,16 @@
     element.classList.remove(classToRemove);
 
   const hideTriggers = (triggers) =>
-    triggers.forEach((trigger) =>
-      hideElement(trigger, triggersClassNames.active)
-    );
+    triggers.forEach((trigger) => {
+      hideElement(trigger, triggersClassNames.active);
+      trigger.setAttribute("aria-expanded", "false");
+    });
 
   const hidePanels = (panels) => {
     panels.forEach((panel) => {
       hideElement(panel, panelsClassNames.active);
       panel.style.maxHeight = 0;
+      panel.setAttribute("aria-hidden", "true");
     });
   };
 
@@ -32,12 +34,13 @@
   const showPanel = (panel) => {
     panel.classList.add(panelsClassNames.active);
     panel.style.maxHeight = panel.scrollHeight + "px";
+    panel.setAttribute("aria-hidden", "false");
   };
 
   const handleAccordionClick = (triggers, panels) => (e) => {
     if (e.target && e.target.classList.contains(triggersClassNames.normal)) {
       const trigger = e.target;
-      const panel = trigger.nextElementSibling;
+      const panel = trigger.parentElement.nextElementSibling;
 
       // If the panel is already active, hide it
       if (trigger.classList.contains(triggersClassNames.active)) {
