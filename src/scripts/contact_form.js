@@ -13,6 +13,7 @@ const regexEmail =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const showError = () => {
+  emailInput.classList.remove(inputClasses.valid);
   emailInput.classList.add(inputClasses.invalid);
   emailFeeback.innerText = errorMessage;
   error = true;
@@ -29,11 +30,6 @@ const handleInput = (e) => {
 
     input.classList.remove(inputClasses.invalid);
     input.classList.add(inputClasses.valid);
-    return;
-  } else if (email === "") {
-    // if email is empty it will not show any error
-    input.classList.remove(inputClasses.invalid);
-    input.classList.remove(inputClasses.valid);
     return;
   }
 
