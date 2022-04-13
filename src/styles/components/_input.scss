@@ -1,8 +1,8 @@
 @use "../abstracts/variables";
 
 $outline: 2px solid;
-$outline-invalid: $outline variables.$red;
-$outline-valid: $outline variables.$green;
+$outline-invalid: 0 variables.$red;
+$outline-valid: 0 variables.$green;
 $border-radius: 4px;
 
 .input-container {
@@ -57,12 +57,10 @@ $border-radius: 4px;
 %feedback {
   border-radius: 0 0 $border-radius $border-radius;
   color: variables.$white;
-  display: none;
   font-size: variables.$font-size-s-small;
   font-style: italic;
   font-weight: variables.$font-weight-medium;
   left: 0;
-  padding: 0.25rem 0.5rem;
   position: absolute;
   text-align: left;
   top: 100%;
@@ -88,11 +86,15 @@ $border-radius: 4px;
 .input.is-invalid ~ .invalid-feedback {
   // When the input is invalid, the feedback message will show up
   display: block;
+  outline-width: $outline;
+  padding: 0.25rem 0.5rem;
 }
 
 .input.is-valid ~ .valid-feedback {
   // When the input is valid, the feedback message will show up
   display: block;
+  outline-width: $outline;
+  padding: 0.25rem 0.5rem;
 }
 
 .input.is-invalid ~ .input-icon.invalid {

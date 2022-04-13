@@ -450,13 +450,14 @@
                 type="email"
                 placeholder="Enter your email address"
                 required
+                aria-describedby="contact-email-feedback"
               />
               <span
+                id="contact-email-feedback"
                 class="invalid-feedback"
-                aria-labelledby="contact-form-email"
+                aria-live="assertive"
               >
-                Whoops, make sure, it's an email</span
-              >
+              </span>
               <i
                 class="fa-solid fa-circle-exclamation fa-xl input-icon invalid"
               ></i>

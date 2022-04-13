@@ -1,6 +1,8 @@
 const emailInput = document.getElementById("contact-form-email");
+const emailFeeback = document.getElementById("contact-email-feedback");
 const form = document.getElementById("contact-form");
 let error = false;
+const errorMessage = "Whoops, make sure, it's an email";
 
 const inputClasses = {
   invalid: "is-invalid",
@@ -12,6 +14,7 @@ const regexEmail =
 
 const showError = () => {
   emailInput.classList.add(inputClasses.invalid);
+  emailFeeback.innerText = errorMessage;
   error = true;
 };
 
@@ -22,6 +25,8 @@ const handleInput = (e) => {
   if (regexEmail.test(email)) {
     // if email is valid show success
     error = false;
+    emailFeeback.innerText = "";
+
     input.classList.remove(inputClasses.invalid);
     input.classList.add(inputClasses.valid);
     return;
