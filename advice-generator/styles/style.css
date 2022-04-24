@@ -1,0 +1,158 @@
+:root {
+  /* Colors */
+  --clp-cyan: hsl(193, 38%, 86%);
+  --clp-green: hsl(150, 100%, 66%);
+
+  --cls-gray-blue: hsl(217, 19%, 38%);
+  --cls-dark-gray-blue: hsl(217, 19%, 24%);
+  --cls-dark-blue: hsl(218, 23%, 16%);
+
+  /* Fonts */
+  --fs-quote: 1.75rem;
+
+  --fw-black: 800;
+
+  --ff-manrope: "Manrope", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--clp-green);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  font-family: var(--ff-manrope);
+  color: var(--cls-gray-blue);
+  background-color: var(--cls-dark-blue);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.advice-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem;
+  padding-bottom: 4rem;
+  margin: 0 1rem;
+  gap: 1rem;
+  background-color: var(--cls-dark-gray-blue);
+  max-width: 540px;
+  border-radius: 12px;
+}
+
+.advice-card__title {
+  color: var(--clp-green);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+}
+
+.advice-card__quote {
+  color: var(--clp-cyan);
+  font-size: var(--fs-quote);
+  font-weight: var(--fw-black);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.advice-card__btn {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clp-green);
+  border-radius: 50%;
+  border: none;
+  width: 65px;
+  height: 65px;
+  transition: all 0.2s ease-in-out;
+  animation: spin 1s 1 linear forwards;
+}
+
+.advice-card__btn:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 30px 0px var(--clp-green);
+}
+
+.advice-card__divider-img {
+  width: 100%;
+}
+
+.attribution {
+  text-align: center;
+  color: var(--clp-cyan);
+  padding: 1rem;
+}
+
+/* Spin Animation */
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
