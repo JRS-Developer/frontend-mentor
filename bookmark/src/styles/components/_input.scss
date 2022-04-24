@@ -1,0 +1,109 @@
+@use "../abstracts/variables";
+
+$outline: 2px solid;
+$outline-invalid: $outline variables.$red;
+$outline-valid: $outline variables.$green;
+$border-radius: 4px;
+
+.input-container {
+  // Widthout this the feedback messages and icons will not be visible
+  position: relative;
+}
+
+.input {
+  border: 0;
+  border-radius: $border-radius;
+  font-size: variables.$font-size-normal;
+  padding: 1rem;
+  position: relative;
+
+  &::placeholder {
+    color: variables.$gray-blue;
+    opacity: 0.5;
+  }
+}
+
+.input.is-invalid {
+  outline: $outline-invalid;
+}
+
+.input.is-valid {
+  outline: $outline-valid;
+}
+
+// Icons
+.input-icon {
+  display: none !important;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.show {
+    display: block !important;
+  }
+
+  &.valid {
+    color: variables.$green;
+  }
+
+  &.invalid {
+    color: variables.$red;
+  }
+}
+
+// Feedback messages
+
+%feedback {
+  border-radius: 0 0 $border-radius $border-radius;
+  color: variables.$white;
+  font-size: variables.$font-size-s-small;
+  font-style: italic;
+  font-weight: variables.$font-weight-medium;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  width: 100%;
+}
+
+// This shows the feedback message when the input is invalid, it shows up in bottom of the input
+.invalid-feedback {
+  @extend %feedback;
+
+  background-color: variables.$red;
+  outline: $outline-invalid;
+  outline-width: 0;
+}
+
+// This shows the feedback message when the input is valid, it shows up in bottom of the input
+.valid-feedback {
+  @extend %feedback;
+
+  background-color: variables.$green;
+  outline-width: 0;
+}
+
+.input.is-invalid ~ .invalid-feedback {
+  // When the input is invalid, the feedback message will show up
+  display: block;
+  outline: $outline-invalid;
+  padding: 0.25rem 0.5rem;
+}
+
+.input.is-valid ~ .valid-feedback {
+  // When the input is valid, the feedback message will show up
+  display: block;
+  outline: $outline-valid;
+  padding: 0.25rem 0.5rem;
+}
+
+.input.is-invalid ~ .input-icon.invalid {
+  // When the input is invalid, the invalid icon will show up
+  display: block !important;
+}
+
+.input.is-valid ~ .input-icon.valid {
+  // When the input is valid, the valid icon will show up
+  display: block !important;
+}

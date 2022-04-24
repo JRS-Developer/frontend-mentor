@@ -1,0 +1,50 @@
+@use "../abstracts/variables";
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: variables.$body-bg;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+
+a {
+  color: variables.$title-color;
+  text-decoration: none;
+  transition: all variables.$transition-duration ease-in-out;
+}
+
+a:hover {
+  color: variables.$secondary-color;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+// Use a minimum value of 1.5 for line-height for main paragraph content.
+// This will help people experiencing low vision conditions,
+// https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#accessibility_concerns
+p {
+  line-height: 1.5;
+}

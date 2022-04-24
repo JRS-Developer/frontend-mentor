@@ -1,0 +1,40 @@
+@use "../abstracts/variables";
+
+%middle-circle {
+  position: relative;
+
+  &::after {
+    background-color: variables.$primary-color;
+    border-radius: 999px;
+    content: "";
+    height: 80%;
+    position: absolute;
+    top: 25%;
+    width: 100vw;
+  }
+
+  > * {
+    position: relative;
+    z-index: variables.$z-index-default;
+  }
+}
+
+.middle-circle-right {
+  @extend %middle-circle;
+
+  &::after {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    left: 20%;
+  }
+}
+
+.middle-circle-left {
+  @extend %middle-circle;
+
+  &::after {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    right: 20%;
+  }
+}

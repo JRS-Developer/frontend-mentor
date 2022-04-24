@@ -1,0 +1,22 @@
+@use "../abstracts/variables";
+
+@font-face {
+  font-display: swap;
+  font-family: "Rubik";
+  font-weight: 400;
+  src: url("../fonts/Rubik-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Rubik";
+  font-weight: 500;
+  src: url("../fonts/Rubik-Medium.ttf") format("truetype");
+}
+
+body {
+  color: variables.$text-color;
+  font-family: variables.$font-family-sans;
+  font-size: variables.$font-size-body;
+  font-weight: variables.$font-weight-normal;
+}

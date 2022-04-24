@@ -1,0 +1,49 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+
+// Home Contact Form
+.contact-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.contact-form-title {
+  font-size: 2rem;
+  max-width: 450px;
+}
+
+.contact-form-desc {
+  color: variables.$white;
+  font-size: variables.$font-size-small;
+  font-weight: variables.$font-weight-medium;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.contact-form-cta {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 440px;
+  width: 100%;
+
+  @include from(md) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+}
+
+.contact-form .input-container {
+  flex: 3; // This makes the input take up 3/4 of the space
+}
+
+.contact-form .input {
+  height: 100%;
+  width: 100%;
+}

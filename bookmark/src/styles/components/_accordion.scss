@@ -1,0 +1,61 @@
+@use "../abstracts/variables";
+
+$border-color: scale-color(
+  $color: variables.$gray-blue,
+  $alpha: -70%,
+);
+
+.accordion {
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-trigger {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-top: 1px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  padding-left: 0;
+  text-align: left;
+  transition: color variables.$transition-duration ease-in-out;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    color: variables.$secondary-color;
+    cursor: pointer;
+  }
+}
+
+.accordion-trigger.active .accordion-icon {
+  color: variables.$secondary-color;
+  transform: rotate(180deg);
+}
+
+.accordion-icon {
+  color: variables.$primary-color;
+  pointer-events: none;
+  transition: transform variables.$transition-duration ease-in-out;
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: variables.$transition-duration ease-in-out;
+  transition-property: max-height, margin;
+}
+
+.accordion-panel.active {
+  margin: 1.5rem 0;
+}
+
+// FAQ accordion
+.faq-accordion {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}

@@ -1,0 +1,57 @@
+// Colors
+
+$red: hsl(0, 94%, 66%);
+$white: hsl(0, 0%, 100%);
+$blue: hsl(231, 69%, 60%);
+$green: hsl(120, 94%, 66%);
+$gray-blue: hsl(229, 8%, 60%);
+$dark-blue: hsl(229, 31%, 21%);
+
+$text-color: $gray-blue;
+$title-color: $dark-blue;
+
+$primary-color: $blue;
+$secondary-color: $red;
+
+$body-bg: $white;
+
+// Fonts
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-family-sans: "Rubik", sans-serif;
+$font-size-s-small: 0.7rem;
+$font-size-small: 0.8rem;
+$font-size-normal: 0.9rem;
+$font-size-body: 1.125rem;
+$font-size-large: 1.25rem;
+
+// Transitions
+$transition-duration: 0.2s;
+
+// Box Shadow
+$box-shadow-color: hsla(229, 8%, 60%, 0.3);
+
+$box-shadow-sm: 0 2px 4px 0 $box-shadow-color;
+$box-shadow-md: 0 6px 8px 0 $box-shadow-color;
+$box-shadow-lg: 0 12px 16px 0 $box-shadow-color;
+
+// Paddings
+$padding-large: 6rem;
+
+// Heights
+$height-header: 8rem;
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
+
+// Z-index
+$z-index-default: 1;
+$z-index-navbar: 10;

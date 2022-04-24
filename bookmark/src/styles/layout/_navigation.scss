@@ -1,0 +1,208 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins" as *;
+
+$light-gray: scale-color(
+  $color: variables.$gray-blue,
+  $alpha: -70%,
+);
+
+$transparent-blue: scale-color(
+  $color: variables.$dark-blue,
+  $alpha: -5%,
+);
+
+.header {
+  height: variables.$height-header;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 3rem;
+  width: 100%;
+
+  @include from(md) {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 variables.$padding-large;
+  }
+}
+
+.navbar.active {
+  background-color: $transparent-blue;
+  position: fixed;
+  transition: background-color variables.$transition-duration;
+  z-index: variables.$z-index-navbar;
+
+  @include from(md) {
+    background-color: variables.$body-bg;
+    position: relative;
+  }
+}
+
+// When the navbar is active, it will show the white logo version and the nav items
+.navbar.active .navbar-logo-mobile {
+  display: block;
+
+  @include from(md) {
+    display: none;
+  }
+}
+
+.navbar.active .navbar-logo-desktop {
+  display: none;
+
+  @include from(md) {
+    display: block;
+  }
+}
+
+.navbar.active .nav {
+  display: flex;
+}
+
+.navbar-brand {
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.navbar-logo-mobile {
+  display: none;
+}
+
+.navbar-logo-desktop {
+  display: block;
+}
+
+.navbar-hamburger {
+  background-color: transparent;
+  border: 0;
+  margin-left: auto;
+
+  @include from(md) {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.navbar-hamburger .bar {
+  background-color: variables.$dark-blue;
+  display: block;
+  height: 4px;
+  margin: 5px auto;
+  transition: transform variables.$transition-duration ease;
+  width: 25px;
+}
+
+.navbar-hamburger.active .bar {
+  background-color: variables.$white;
+}
+
+.navbar-hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.navbar-hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.nav {
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  gap: 0 1rem;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  margin-top: 2rem;
+  padding: 0;
+  width: 100%;
+
+  @include from(md) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+  @include from(lg) {
+    column-gap: 3rem;
+  }
+}
+
+.nav-item {
+  display: flex;
+  width: 100%;
+
+  @include from(md) {
+    width: auto;
+  }
+}
+
+.nav-link {
+  border: 1px solid $light-gray;
+  border-left: 0;
+  border-right: 0;
+  color: variables.$white;
+  font-size: variables.$font-size-large;
+  letter-spacing: 2px;
+  padding: 1.25rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+
+  @include from(md) {
+    border: 0;
+    color: variables.$title-color;
+    font-size: variables.$font-size-small;
+    padding: 0;
+    width: auto;
+  }
+}
+
+.nav-btn {
+  @include upto(sm) {
+    background-color: transparent !important;
+    border-color: variables.$white !important;
+    color: variables.$white;
+    font-size: variables.$font-size-large !important;
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    width: 100%;
+  }
+}
+
+.nav-social {
+  align-items: center;
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+
+  @include from(md) {
+    display: none;
+  }
+}
+
+.nav-social-link {
+  color: variables.$white;
+  font-size: variables.$font-size-body;
+  text-decoration: none;
+  transition: all variables.$transition-duration ease;
+
+  &:hover {
+    color: $light-gray;
+  }
+}
