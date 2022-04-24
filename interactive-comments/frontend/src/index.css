@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  @apply bg-n-v-light-gray min-h-screen min-w-[100vw] overflow-x-hidden;
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-p-moderate-blue rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-p-moderate-blue/80;
+}
