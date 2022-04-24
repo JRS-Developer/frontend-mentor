@@ -1,0 +1,32 @@
+@font-face {
+	font-family: 'Space Mono';
+	src: url('../../fonts/SpaceMono-Regular.ttf'),
+		url('../../fonts/SpaceMono-Italic.ttf'),
+		url('../../fonts/SpaceMono-Bold.ttf'),
+		url('../../fonts/SpaceMono-BoldItalic.ttf');
+}
+
+body {
+	background: var(--light-grayish-cyan);
+	color: var(--darker-grayish-cyan);
+	font-family: 'Space Mono', 'sans-serif';
+	font-size: var(--fs-body);
+}
+
+a {
+	color: var(--darker-grayish-cyan);
+}
+
+a:hover {
+	color: var(--primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}

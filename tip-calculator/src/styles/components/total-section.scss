@@ -1,0 +1,21 @@
+.total-section {
+	background: var(--dark-cyan);
+	border-radius: var(--btn-radius);
+	color: var(--white);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 2rem;
+
+	@include upto(s) {
+		gap: 2rem;
+		padding: 1rem;
+	}
+}
+
+.total-section__text-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: space-between;
+}

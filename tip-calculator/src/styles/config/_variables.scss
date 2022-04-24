@@ -1,0 +1,51 @@
+@import './mixins';
+
+:root {
+	// Colors
+	--primary: hsl(172, 67%, 45%);
+	--secondary: var(--dark-cyan);
+	--dark-cyan: hsl(183, 100%, 15%);
+	--very-dark-cyan: hsl(183, 100%, 10%);
+	--darker-grayish-cyan: hsl(186, 14%, 43%);
+	--dark-grayish-cyan: hsl(184, 14%, 56%);
+	--light-grayish-cyan: hsl(185, 41%, 84%);
+	--lighter-grayish-cyan: hsl(189, 41%, 97%);
+	--white: hsl(0, 0%, 100%);
+	--red: hsl(346, 84%, 61%);
+
+	// Fonts
+	--fs-bigger: 2rem;
+	--fs-big: 1.5rem;
+	--fs-normal: 1rem;
+	--fs-small: 0.75rem;
+	--fs-input: var(--fs-big);
+	--fs-body: var(--fs-normal);
+
+	// Font Weights
+	--fw-normal: 500;
+	--fw-bold: 700;
+	--fw-bolder: 800;
+
+	// Others
+	--radius-bigger: 20px;
+	--radius-big: 10px;
+	--radius-normal: 5px;
+	--btn-radius: var(--radius-normal);
+}
+
+$breakpoints: (
+	s: 640px,
+	m: 768px,
+	l: 1024px,
+	lx: 1200px,
+);
+
+// Mobile
+:root {
+	@include upto(s) {
+		--fs-bigger: 1.5rem;
+		--fs-big: 1rem;
+		--fs-normal: 0.75rem;
+		--fs-small: 0.5rem;
+	}
+}
