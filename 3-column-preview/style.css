@@ -1,0 +1,141 @@
+:root {
+  --orange: hsl(31, 77%, 52%);
+  --cyan: hsl(184, 100%, 22%);
+  --dark-cyan: hsl(179, 100%, 13%);
+  --light-gray: hsl(0, 0%, 95%);
+  --paragraph-color: hsla(0, 0%, 100%, 0.75);
+
+  --font-body: 15px;
+
+  --font-display: "Big Shoulders Display", cursive;
+  --font-sans: "Lexend Deca", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-size: var(--font-body);
+  background-color: var(--light-gray);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--dark-cyan);
+  transition: color 0.2s ease-in-out;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-gray);
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--light-gray);
+  border: 2px solid var(--light-gray);
+  transition: background-color 0.2s;
+}
+
+.card__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-flow: dense;
+  max-width: 920px;
+  min-height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 3rem 1rem;
+}
+
+.card__item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--paragraph-color);
+  padding: 4rem 3rem;
+}
+
+.card__item-footer {
+  margin-top: auto;
+}
+
+.card__item--orange {
+  background-color: var(--orange);
+}
+
+.card__item--cyan {
+  background-color: var(--cyan);
+}
+
+.card__item--dark-cyan {
+  background-color: var(--dark-cyan);
+}
+
+.card__item__title {
+  font-weight: 700;
+  color: var(--light-gray);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+}
+
+.card__item__paragraph {
+  color: var(--paragraph-color);
+  line-height: 1.5;
+}
+
+.card__item__btn--orange {
+  color: var(--orange);
+}
+
+.card__item__btn--cyan {
+  color: var(--cyan);
+}
+
+.card__item__btn--dark-cyan {
+  color: var(--dark-cyan);
+}
+
+.footer {
+  text-align: center;
+  background-color: var(--light-gray);
+  padding: 1rem;
+  border-top: 1px solid var(--light-gray);
+  font-size: 0.75rem;
+}
