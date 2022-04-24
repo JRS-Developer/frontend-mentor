@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | NFT preview card component</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <main class="main">
+      <div class="card">
+        <div class="card__body">
+          <div class="card__img-container">
+            <img
+              src="./images/image-equilibrium.jpg"
+              class="card__img"
+              alt="NFT preview card"
+            />
+            <div class="card__img-overlay">
+              <img alt="NFT see image" src="./images/icon-view.svg" />
+            </div>
+          </div>
+          <div class="card__text-container">
+            <h1 class="card__text-container__title">
+              <a href="#">Equilibrium #3429</a>
+            </h1>
+            <p>Our Equilibrium collection promotes balance and calm.</p>
+          </div>
+          <div class="card__stats">
+            <div class="card__stats-item text-green">
+              <img
+                class="icon"
+                src="./images/icon-ethereum.svg"
+                alt="Ethereum icon"
+              />
+              <b>0.041 ETH</b>
+            </div>
+            <div class="card__stats-item">
+              <img
+                class="icon"
+                src="./images/icon-clock.svg"
+                alt="Clock icon"
+              />
+              <span>3 days left</span>
+            </div>
+          </div>
+        </div>
+        <footer class="card__footer">
+          <div>
+            <img
+              class="avatar"
+              src="./images/image-avatar.png"
+              alt="Jules Wyvern avatar"
+            />
+          </div>
+          <p>Creation of <a href="#">Jules Wyvern</a></p>
+        </footer>
+      </div>
+    </main>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/JRS-Developer/" target="_blank"
+          >Jose Sanchez (JRS-Developer)</a
+        >.
+      </div>
+    </footer>
+  </body>
+</html>
